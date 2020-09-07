@@ -36,7 +36,7 @@ export default function Home({ data }) {
                 - {node.frontmatter.modified}{" "}
               </span>
             </h3>
-            <p> {node.frontmatter.excerpt} </p>
+            <p> {node.excerpt} </p>
           </div>
         ))}
       </React.Fragment>
@@ -46,7 +46,10 @@ export default function Home({ data }) {
 
 export const query = graphql`
   {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      filter: {}
+      sort: { fields: frontmatter___modified, order: DESC }
+    ) {
       edges {
         node {
           frontmatter {
@@ -56,6 +59,7 @@ export const query = graphql`
           }
           excerpt
           html
+          id
         }
       }
       totalCount
