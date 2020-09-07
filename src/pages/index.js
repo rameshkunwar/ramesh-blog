@@ -1,19 +1,67 @@
 import React from "react"
 import Layout from "../components/layout"
+import { graphql } from "gatsby"
+import { css } from "@emotion/core"
+import { rhythm } from "../utils/typography"
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <Layout>
-      <h1>Amazing Pandas Eating Things</h1>
-      <div>
-        <img
-          src="https://2.bp.blogspot.com/-BMP2l6Hwvp4/TiAxeGx4CTI/AAAAAAAAD_M/XlC_mY3SoEw/s1600/panda-group-eating-bamboo.jpg"
-          alt="Group of pandas eating bamboo"
-        />
-      </div>
+      <React.Fragment>
+        <h1
+          css={css`
+            display: inline-block;
+            border-bottom: 1px solid;
+          `}
+        >
+          Amazing blogs with Gatsby and GraphQL
+        </h1>
+        <h4> {data.allMarkdownRemark.totalCount} posts </h4>
+
+        {data.allMarkdownRemark.edges.map(({ node }) => (
+          <div key={node.id}>
+            <h3
+              css={css`
+                margin-bottom: ${rhythm(1 / 4)};
+              `}
+            >
+              {" "}
+              {node.frontmatter.title}
+              <span
+                css={css`
+                  color: #bbb;
+                `}
+              >
+                {" "}
+                - {node.frontmatter.modified}{" "}
+              </span>
+            </h3>
+            <p> {node.frontmatter.excerpt} </p>
+          </div>
+        ))}
+      </React.Fragment>
     </Layout>
   )
 }
+
+export const query = graphql`
+  {
+    allMarkdownRemark {
+      edges {
+        node {
+          frontmatter {
+            title
+            description
+            modified(fromNow: true, locale: "da-DK")
+          }
+          excerpt
+          html
+        }
+      }
+      totalCount
+    }
+  }
+`
 
 // export default function Home() {
 //   return (
