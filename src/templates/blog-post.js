@@ -1,11 +1,13 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
   return (
     <Layout>
+      <SEO title={post.frontmatter.title} description={post.excerpt} />
       <h1> {post.frontmatter.title} </h1>
       <span> {post.frontmatter.modified} </span>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -22,6 +24,7 @@ export const query = graphql`
         description
         modified(fromNow: true, locale: "da-DK")
       }
+      excerpt
     }
   }
 `
