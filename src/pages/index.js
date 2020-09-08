@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 
@@ -20,22 +20,30 @@ export default function Home({ data }) {
 
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
-            <h3
+            <Link
+              to={node.fields.slug}
               css={css`
-                margin-bottom: ${rhythm(1 / 4)};
+                text-decoration: none;
+                color: inherit;
               `}
             >
-              {" "}
-              {node.frontmatter.title}
-              <span
+              <h3
                 css={css`
-                  color: #bbb;
+                  margin-bottom: ${rhythm(1 / 4)};
                 `}
               >
                 {" "}
-                - {node.frontmatter.modified}{" "}
-              </span>
-            </h3>
+                {node.frontmatter.title}
+                <span
+                  css={css`
+                    color: #bbb;
+                  `}
+                >
+                  {" "}
+                  - {node.frontmatter.modified}{" "}
+                </span>
+              </h3>
+            </Link>
             <p> {node.excerpt} </p>
           </div>
         ))}
@@ -56,6 +64,9 @@ export const query = graphql`
             title
             description
             modified(fromNow: true, locale: "da-DK")
+          }
+          fields {
+            slug
           }
           excerpt
           html
