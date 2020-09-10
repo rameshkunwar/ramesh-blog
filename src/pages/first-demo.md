@@ -3,6 +3,7 @@ title: "first demo"
 created: "2020-09-06T19:39:46.823Z"
 modified: "2020-09-06T23:39:46.823Z"
 description: "A detail description of markdown with Gatsby and GraphQL"
+featuredImage: ../images/Ryan-strand.jpg
 ---
 
 ### What is Lorem Ipsum?

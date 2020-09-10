@@ -3,6 +3,7 @@ title: "second demo"
 created: "2020-09-07T10:39:46.823Z"
 modified: "2020-09-07T19:39:46.823Z"
 description: "A detail description of markdown with Gatsby and GraphQL"
+featuredImage: ../images/Ryan-baby.jpg
 ---
 
 ### Where does it come from?

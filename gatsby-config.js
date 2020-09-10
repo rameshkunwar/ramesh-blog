@@ -22,9 +22,18 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-filesystem`,
+      // options: {
+      //   name: `src`,
+      //   path: `${__dirname}/src/`,
+      // },
       options: {
-        name: `src`,
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images/`,
       },
     },
     {
@@ -43,5 +52,7 @@ module.exports = {
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
   ],
 }

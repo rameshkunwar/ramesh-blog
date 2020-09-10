@@ -1,5 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
+import Img from "gatsby-image"
 import { graphql, Link } from "gatsby"
 import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
@@ -27,6 +28,9 @@ export default function Home({ data }) {
                 color: inherit;
               `}
             >
+              <Img
+                fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
+              />
               <h3
                 css={css`
                   margin-bottom: ${rhythm(1 / 4)};
@@ -64,6 +68,13 @@ export const query = graphql`
             title
             description
             modified(fromNow: true, locale: "da-DK")
+            featuredImage {
+              childImageSharp {
+                fluid(maxWidth: 700) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           fields {
             slug
