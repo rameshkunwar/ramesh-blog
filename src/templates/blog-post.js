@@ -25,6 +25,7 @@ export const query = graphql`
       frontmatter {
         title
         description
+        tags
         modified(fromNow: true, locale: "da-DK")
         featuredImage {
           childImageSharp {

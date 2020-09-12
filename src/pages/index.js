@@ -48,6 +48,50 @@ export default function Home({ data }) {
                 </span>
               </h3>
             </Link>
+            <div
+              css={css`
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                align-items: center;
+              `}
+            >
+              <div
+                css={css`
+                  margin: 0.4rem 0;
+                  display: wrap;
+                  flex-wrap: wrap;
+                `}
+              >
+                {node.frontmatter.tags.map((tag, i) => [
+                  <a
+                    key={`tag-${i}`}
+                    css={css`
+                      font-size: 1.2rem;
+                      margin-right: 0.5rem;
+                      background-color: #e7eef3;
+                      height: 2rem;
+                      border-radius: 1rem;
+                      padding: 0 0.8rem;
+                      color: #2c445a;
+                      margin-top: 0.2rem;
+                      text-decoration: none !important;
+                      text-shadow: none;
+                      background-image: none;
+                      &:hover {
+                        cursor: pointer;
+                        color: #33805b;
+                        background-color: #ebf5f0;
+                        text-decoration: none;
+                      }
+                    `}
+                    href="#"
+                  >
+                    <span>{tag}</span>
+                  </a>,
+                ])}
+              </div>
+            </div>
             <p> {node.excerpt} </p>
           </div>
         ))}
@@ -67,6 +111,7 @@ export const query = graphql`
           frontmatter {
             title
             description
+            tags
             modified(fromNow: true, locale: "da-DK")
             featuredImage {
               childImageSharp {

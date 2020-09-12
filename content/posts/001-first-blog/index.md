@@ -5,6 +5,7 @@ modified: "2020-09-06T23:39:46.823Z"
 description: "A detail description of markdown with Gatsby and GraphQL"
 featuredImage: "../../images/blog/first-blog.jpg"
 slug: first-blog-post
+tags: ["javascript", "blog", "gatsby"]
 ---
 
 ### What is Lorem Ipsum?

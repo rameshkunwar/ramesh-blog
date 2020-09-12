@@ -35,7 +35,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `slug`,
       value: slug,
     })
-    console.log(createFilePath({ node, getNode, basePath: `pages` }))
+    //console.log(createFilePath({ node, getNode, basePath: `content` }))
   }
 }
 
@@ -50,6 +50,9 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             fields {
               slug
+            }
+            frontmatter {
+              tags
             }
           }
         }
@@ -69,4 +72,27 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+
+  //code for tag handling, not used yet now
+  //   const tagResult = await graphql(`
+  //   {
+  //     allMarkdownRemark(limit: 2000) {
+  //       group(field: frontmatter___tags) {
+  //         fieldValue
+  //       }
+  //     }
+  //   }
+  // `)
+
+  //   const tags = tagResult.data.allMarkdownRemark.group
+
+  //   tags.forEach(tag => {
+  //     createPage({
+  //       path: `/content/posts/tags/${_.kebabCase(tag.fieldValue)}/`,
+  //       component: path.resolve(`./src/templates/blog-tags.js`),
+  //       context: {
+  //         tag: tag.fieldValue,
+  //       },
+  //     })
+  //   })
 }

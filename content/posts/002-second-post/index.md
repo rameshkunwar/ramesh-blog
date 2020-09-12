@@ -5,6 +5,7 @@ modified: "2020-09-12T23:39:46.823Z"
 description: "Testing second post after chaing blog and image root folder"
 featuredImage: "../../images/blog/second-blog.jpg"
 slug: second-blog-post
+tags: ["c#", ".net core"]
 ---
 
 ### What is Lorem Ipsum?
