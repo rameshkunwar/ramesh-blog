@@ -13,27 +13,37 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-emotion`,
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-highlight-code`,
+            options: {
+              terminal: "carbon",
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+
     {
       resolve: `gatsby-source-filesystem`,
-      // options: {
-      //   name: `src`,
-      //   path: `${__dirname}/src/`,
-      // },
       options: {
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/content/`,
+        name: `content`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/images/`,
+        path: `${__dirname}/content/images/`,
       },
     },
     {
@@ -47,7 +57,7 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `src/images/favicon-32x32.png`, // This path is relative to the root of the site.
+        icon: `content/images/favicon-32x32.png`, // This path is relative to the root of the site.
       },
     },
     `gatsby-plugin-offline`,
