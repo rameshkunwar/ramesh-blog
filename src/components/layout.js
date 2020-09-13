@@ -1,15 +1,18 @@
 import React from "react"
 import { Link, graphql, useStaticQuery } from "gatsby"
 import { css } from "@emotion/core"
+import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
+import Navbar from "./navbar/navbar"
 deckDeckGoHighlightElement()
 
-// const ListLink = props => (
-//   <li style={{ display: `inline-block`, marginRight: `1rem` }}>
-//     <Link to={props.to}>{props.children}</Link>
-//   </li>
-// )
+const Container = styled.div`
+  margin: 0 auto;
+  max-width: 700px;
+  padding: ${rhythm(2)};
+  padding-top: ${rhythm(1.5)};
+`
 export default function Layout({ children }) {
   //useStaticQuery helps to retrieve data via GraphQL queries from non-page components
   const data = useStaticQuery(graphql`
@@ -23,37 +26,33 @@ export default function Layout({ children }) {
     }
   `)
   return (
-    <div
-      css={css`
-        margin: 0 auto;
-        max-width: 700px;
-        padding: ${rhythm(2)};
-        padding-top: ${rhythm(1.5)};
-      `}
-    >
-      <Link to="/">
-        <h3
+    <React.Fragment>
+      <Navbar />
+      <Container>
+        <Link to="/">
+          <h3
+            css={css`
+              margin-bottom: ${rhythm(2)};
+              display: inline-block;
+              font-style: normal;
+            `}
+          >
+            {data.site.siteMetadata.title}
+          </h3>
+        </Link>
+        <Link
+          to="/about/"
           css={css`
-            margin-bottom: ${rhythm(2)};
-            display: inline-block;
-            font-style: normal;
+            float: right;
+            margin-top: ${rhythm(1.5)};
           `}
         >
-          {data.site.siteMetadata.title}
-        </h3>
-      </Link>
-      <Link
-        to="/about/"
-        css={css`
-          float: right;
-          margin-top: ${rhythm(1.5)};
-        `}
-      >
-        About
-      </Link>
+          About
+        </Link>
 
-      {children}
-    </div>
+        {children}
+      </Container>
+    </React.Fragment>
   )
 }
 
