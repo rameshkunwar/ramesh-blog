@@ -12,6 +12,14 @@ const Container = styled.div`
   max-width: 700px;
   padding: ${rhythm(2)};
   padding-top: ${rhythm(1.5)};
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    font-size: 22px !important;
+    line-height: 1.54 !important;
+  }
 `
 export default function Layout({ children }) {
   //useStaticQuery helps to retrieve data via GraphQL queries from non-page components
@@ -29,7 +37,7 @@ export default function Layout({ children }) {
     <React.Fragment>
       <Navbar />
       <Container>
-        <Link to="/">
+        {/* <Link to="/">
           <h3
             css={css`
               margin-bottom: ${rhythm(2)};
@@ -48,7 +56,7 @@ export default function Layout({ children }) {
           `}
         >
           About
-        </Link>
+        </Link> */}
 
         {children}
       </Container>
