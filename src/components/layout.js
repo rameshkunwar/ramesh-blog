@@ -13,7 +13,7 @@ const Container = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     max-width: 100%;
-    padding: 1rem;
+    padding: 0.5rem;
     padding-top: 0.5rem;
     font-size: 22px !important;
     line-height: 1.54 !important;

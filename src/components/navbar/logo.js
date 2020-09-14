@@ -50,6 +50,7 @@ const Thought = styled.div`
     font-weight: 400;
   }
 `
+
 const Logo = () => {
   const data = useStaticQuery(graphql`
     query {

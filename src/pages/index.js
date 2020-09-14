@@ -3,24 +3,26 @@ import Layout from "../components/layout"
 import Img from "gatsby-image"
 import { graphql, Link } from "gatsby"
 import { css } from "@emotion/core"
+import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
 
 export default function Home({ data }) {
+  const IndividualPostWrapper = styled.div`
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px #dae4ed, 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+    margin-top: 1rem;
+    background: #fff;
+    overflow: hidden;
+    padding: 1rem;
+    @media (max-width: 667px) {
+      padding: 0.5rem;
+    }
+  `
   return (
     <Layout>
       <React.Fragment>
-        <h1
-          css={css`
-            display: inline-block;
-            border-bottom: 1px solid;
-          `}
-        >
-          Amazing blogs with Gatsby and GraphQL
-        </h1>
-        <h4> {data.allMarkdownRemark.totalCount} posts </h4>
-
         {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
+          <IndividualPostWrapper key={node.id}>
             <Link
               to={node.fields.slug}
               css={css`
@@ -93,7 +95,7 @@ export default function Home({ data }) {
               </div>
             </div>
             <p> {node.excerpt} </p>
-          </div>
+          </IndividualPostWrapper>
         ))}
       </React.Fragment>
     </Layout>
