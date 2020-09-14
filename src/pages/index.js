@@ -69,19 +69,19 @@ export default function Home({ data }) {
                     css={css`
                       font-size: 1.2rem;
                       margin-right: 0.5rem;
-                      background-color: #e7eef3;
+                      background-color: rgb(0 56 147 / 0.2);
                       height: 2rem;
                       border-radius: 1rem;
                       padding: 0 0.8rem;
-                      color: #2c445a;
+                      color: #003893;
                       margin-top: 0.2rem;
                       text-decoration: none !important;
                       text-shadow: none;
                       background-image: none;
                       &:hover {
                         cursor: pointer;
-                        color: #33805b;
-                        background-color: #ebf5f0;
+                        color: #dc143c;
+                        background-color: rgb(0 56 147 / 0.2);
                         text-decoration: none;
                       }
                     `}

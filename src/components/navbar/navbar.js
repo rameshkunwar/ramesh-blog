@@ -4,21 +4,32 @@ import NavbarLinks from "./NavbarLinks"
 import Logo from "./Logo"
 
 const Navigation = styled.nav`
-  height: 8vh;
+  height: 9vh;
   display: flex;
   background-color: #fff;
   position: relative;
   justify-content: space-between;
   text-transform: uppercase;
-  border-bottom: 2px solid #33333320;
   margin: 0 auto;
   padding: 0 5vw;
   z-index: 2;
   align-self: center;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0%), 0 5px 15px -5px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     position: sticky;
-    height: 8vh;
+    height: 10vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+  }
+  @media (max-width: 667px) {
+    padding: 0 2vw;
+  }
+  @media (max-width: 320px) {
+    position: sticky;
+    height: 12vh;
     top: 0;
     left: 0;
     right: 0;
@@ -34,6 +45,9 @@ const Toggle = styled.div`
 
   @media (max-width: 768px) {
     display: flex;
+  }
+  @media (max-width: 667px) {
+    padding: 0 2vw;
   }
 `
 
@@ -51,8 +65,11 @@ const Navbox = styled.div`
     padding-top: 10vh;
     background-color: #fff;
     transition: all 0.3s ease-in;
-    top: 8vh;
+    top: 10vh;
     left: ${props => (props.open ? "-100%" : "0")};
+  }
+  @media (max-width: 320px) {
+    top: 12vh;
   }
 `
 

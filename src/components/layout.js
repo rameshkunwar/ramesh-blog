@@ -1,6 +1,4 @@
 import React from "react"
-import { Link, graphql, useStaticQuery } from "gatsby"
-import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
@@ -22,44 +20,10 @@ const Container = styled.div`
   }
 `
 export default function Layout({ children }) {
-  //useStaticQuery helps to retrieve data via GraphQL queries from non-page components
-  const data = useStaticQuery(graphql`
-    query {
-      site {
-        siteMetadata {
-          title
-          description
-        }
-      }
-    }
-  `)
   return (
     <React.Fragment>
       <Navbar />
-      <Container>
-        {/* <Link to="/">
-          <h3
-            css={css`
-              margin-bottom: ${rhythm(2)};
-              display: inline-block;
-              font-style: normal;
-            `}
-          >
-            {data.site.siteMetadata.title}
-          </h3>
-        </Link>
-        <Link
-          to="/about/"
-          css={css`
-            float: right;
-            margin-top: ${rhythm(1.5)};
-          `}
-        >
-          About
-        </Link> */}
-
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </React.Fragment>
   )
 }
