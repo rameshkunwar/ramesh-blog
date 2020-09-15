@@ -114,7 +114,7 @@ export const query = graphql`
             title
             description
             tags
-            modified(fromNow: true, locale: "da-DK")
+            modified
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 700) {
@@ -126,7 +126,7 @@ export const query = graphql`
           fields {
             slug
           }
-          excerpt
+          excerpt(pruneLength: 140)
           html
           id
         }

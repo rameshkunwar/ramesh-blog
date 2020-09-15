@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import moment from "moment"
 
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
@@ -11,7 +12,12 @@ export default function BlogPost({ data }) {
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <h1> {post.frontmatter.title} </h1>
-      <span> {post.frontmatter.modified} </span>
+      <span>
+        {" "}
+        {moment(post.frontmatter.modified)
+          .format("DD-MMM-YYYY")
+          .toUpperCase()}{" "}
+      </span>
       <Img fluid={featuredImgFluid} />
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
@@ -26,7 +32,7 @@ export const query = graphql`
         title
         description
         tags
-        modified(fromNow: true, locale: "da-DK")
+        modified
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 650) {
@@ -35,7 +41,7 @@ export const query = graphql`
           }
         }
       }
-      excerpt
+      excerpt(pruneLength: 140)
     }
   }
 `

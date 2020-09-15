@@ -4,32 +4,38 @@ import NavbarLinks from "./NavbarLinks"
 import Logo from "./Logo"
 
 const Navigation = styled.nav`
-  height: 9vh;
+  height: 4rem;
   display: flex;
   background-color: #fff;
   position: relative;
   justify-content: space-between;
   text-transform: uppercase;
   margin: 0 auto;
-  padding: 0 5vw;
+  padding: 0 2rem;
   z-index: 2;
   align-self: center;
   box-shadow: 0 0 0 1px rgb(0 0 0 / 0%), 0 5px 15px -5px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     position: sticky;
-    height: 10vh;
+    // height: 9vh;
     top: 0;
     left: 0;
     right: 0;
     left: 0;
   }
   @media (max-width: 667px) {
-    padding: 0 2vw;
+    position: sticky;
+    // height: 11vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+    padding: 0 0.5rem;
   }
   @media (max-width: 320px) {
     position: sticky;
-    height: 12vh;
+    // height: 12vh;
     top: 0;
     left: 0;
     right: 0;

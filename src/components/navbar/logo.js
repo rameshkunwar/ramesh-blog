@@ -8,16 +8,15 @@ const LogoWrap = styled.div`
   margin: auto 0;
   flex: 0 1 64px;
   border-radius: 64px;
-
-  @media (max-width: 768px) and (orientation: landscape) {
-    flex: 0 1 25px;
-  }
 `
 const NameAndThoughtWrap = styled.div`
   margin-right: auto;
   flex: 0 1 250px;
   text-transform: none;
-  padding: 0.3rem 0 0 0.3rem;
+  padding: 0.325rem 0 0 0.325rem;
+  @media (max-width: 667px) {
+    padding-top: 0.5rem;
+  }
 `
 
 const StyledLink = styled(Link)`

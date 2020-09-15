@@ -7,9 +7,9 @@ deckDeckGoHighlightElement()
 
 const Container = styled.div`
   margin: 0 auto;
-  max-width: 700px;
+  max-width: 800px;
   padding: ${rhythm(2)};
-  padding-top: ${rhythm(1.5)};
+  padding-top: ${rhythm(1 / 2)};
   @media (max-width: 768px) {
     width: 100%;
     max-width: 100%;
