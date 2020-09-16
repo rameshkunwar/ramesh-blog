@@ -10,6 +10,7 @@ module.exports = {
     title: `My demo site title`,
     description: `My demo site description so that Google can find it easily`,
     author: `Ramesh Kunwar`,
+    siteUrl: `https://kunwar.dk`,
   },
   plugins: [
     `gatsby-plugin-emotion`,
@@ -49,17 +50,19 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `Ramesh's personal blog`,
+        short_name: `RameshBlog`,
         start_url: `/`,
-        background_color: `#6b37bf`,
-        theme_color: `#6b37bf`,
+        background_color: `#003893`,
+        theme_color: `#003893`,
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `content/images/favicon-32x32.png`, // This path is relative to the root of the site.
+        icon: `content/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
+        crossOrigin: `use-credentials`,
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,

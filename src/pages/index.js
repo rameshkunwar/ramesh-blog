@@ -5,6 +5,7 @@ import { graphql, Link } from "gatsby"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
+import moment from "moment"
 
 export default function Home({ data }) {
   const IndividualPostWrapper = styled.div`
@@ -46,7 +47,10 @@ export default function Home({ data }) {
                   `}
                 >
                   {" "}
-                  - {node.frontmatter.modified}{" "}
+                  -{" "}
+                  {moment(node.frontmatter.modified)
+                    .format("DD-MMM-YYYY")
+                    .toUpperCase()}{" "}
                 </span>
               </h3>
             </Link>
@@ -135,15 +139,3 @@ export const query = graphql`
     }
   }
 `
-
-// export default function Home() {
-//   return (
-//     <Layout>
-//       <h1>Hi! I'm building a fake Gatsby site as part of a tutorial!</h1>
-//       <p>
-//         What do I like to do? Lots of course but definitely enjoy building
-//         websites.
-//       </p>
-//     </Layout>
-//   )
-// }

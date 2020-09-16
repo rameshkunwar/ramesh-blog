@@ -10,7 +10,12 @@ export default function BlogPost({ data }) {
   const featuredImgFluid = post.frontmatter.featuredImage.childImageSharp.fluid
   return (
     <Layout>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <SEO
+        title={post.frontmatter.title}
+        description={post.excerpt}
+        published={post.frontmatter.created}
+        modified={post.frontmatter.modified}
+      />
       <h1> {post.frontmatter.title} </h1>
       <span>
         {" "}
@@ -33,6 +38,7 @@ export const query = graphql`
         description
         tags
         modified
+        created
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 650) {
