@@ -1,9 +1,10 @@
 import React from "react"
 import styled from "@emotion/styled"
 import Img from "gatsby-image"
-import { Link, StaticQuery, graphql, useStaticQuery } from "gatsby"
+import { Link } from "gatsby"
 import { css } from "@emotion/core"
-import { query } from "../../pages"
+// import { query } from "../../pages"
+import { useImageFluid } from "./use-author-image-hooks"
 
 const LogoWrap = styled.div`
   margin: auto 0;
@@ -50,39 +51,59 @@ const Thought = styled.div`
     font-weight: 400;
   }
 `
+const Logo = () => {
+  const { childImageSharp } = useImageFluid()
+  return (
+    <React.Fragment>
+      <LogoWrap as={Link} to="/">
+        <Img
+          css={css`
+            border-radius: 64px;
+          `}
+          fluid={childImageSharp?.fluid}
+          alt="logo"
+        />
+      </LogoWrap>
+      <NameAndThoughtWrap>
+        <StyledLink to="/">Ramesh Kunwar</StyledLink>
+        <Thought>To teach is to learn twice</Thought>
+      </NameAndThoughtWrap>
+    </React.Fragment>
+  )
+}
 
-export default Logo => (
-  <StaticQuery
-    query={graphql`
-      query {
-        file(name: { eq: "author_image" }, extension: { eq: "jpeg" }) {
-          childImageSharp {
-            fluid(maxWidth: 64, pngQuality: 80) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `}
-    render={data => (
-      <React.Fragment>
-        <LogoWrap as={Link} to="/">
-          <Img
-            css={css`
-              border-radius: 64px;
-            `}
-            fluid={data?.file?.childImageSharp?.fluid}
-            alt="logo"
-          />
-        </LogoWrap>
-        <NameAndThoughtWrap>
-          <StyledLink to="/">Ramesh Kunwar</StyledLink>
-          <Thought>To teach is to learn twice</Thought>
-        </NameAndThoughtWrap>
-      </React.Fragment>
-    )}
-  />
-)
+// export default Logo => (
+//   <StaticQuery
+//     query={graphql`
+//       query {
+//         file(name: { eq: "author_image" }, extension: { eq: "jpeg" }) {
+//           childImageSharp {
+//             fluid(maxWidth: 64, pngQuality: 80) {
+//               ...GatsbyImageSharpFluid
+//             }
+//           }
+//         }
+//       }
+//     `}
+//     render={data => (
+//       <React.Fragment>
+//         <LogoWrap as={Link} to="/">
+//           <Img
+//             css={css`
+//               border-radius: 64px;
+//             `}
+//             fluid={data?.file?.childImageSharp?.fluid}
+//             alt="logo"
+//           />
+//         </LogoWrap>
+//         <NameAndThoughtWrap>
+//           <StyledLink to="/">Ramesh Kunwar</StyledLink>
+//           <Thought>To teach is to learn twice</Thought>
+//         </NameAndThoughtWrap>
+//       </React.Fragment>
+//     )}
+//   />
+// )
 
 //   return (
 //     <React.Fragment>
@@ -103,4 +124,4 @@ export default Logo => (
 //   )
 // }
 
-//export default Logo
+export default Logo
