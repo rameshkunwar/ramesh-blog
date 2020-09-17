@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
 import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/highlight-code/dist/loader"
 import Navbar from "./navbar/navbar"
+import Footer from "./footer"
 deckDeckGoHighlightElement()
 
 const Container = styled.div`
@@ -24,6 +25,7 @@ export default function Layout({ children }) {
     <React.Fragment>
       <Navbar />
       <Container>{children}</Container>
+      <Footer />
     </React.Fragment>
   )
 }
