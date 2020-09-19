@@ -28,10 +28,10 @@ module.exports = {
   googleAnalyticsTrackingId: `ADD YOUR TRACKING ID HERE`,
 
   // Site Style:
-  primaryThemeColor: "rgb((0, 56, 147))",
-  secondaryThemeColor: "rgb((220, 20, 60))",
+  primaryThemeColor: "rgb(0, 56, 147)",
+  secondaryThemeColor: "rgb(198, 12, 48)", //"rgb(220, 20, 60)",
   font: "Lato",
   fontHeadings: "",
   brandColor: "#003893",
-  alternativeColor: "#dc143c",
+  alternativeColor: "#C60C30", //"#dc143c",
 }

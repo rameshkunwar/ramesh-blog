@@ -1,10 +1,11 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { Link } from "gatsby"
+import siteConfig from "../../../site-config"
 
 const NavItem = styled(Link)`
   text-decoration: none;
-  color: #003893;
+  color: ${siteConfig.brandColor};
   display: inline-block;
   white-space: nowrap;
   margin: 0 1vw;
@@ -21,13 +22,13 @@ const NavItem = styled(Link)`
     width: 0%;
     content: ".";
     color: transparent;
-    background: #dc143c;
+    background: ${siteConfig.alternativeColor};
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: #dc143c;
+    color: ${siteConfig.alternativeColor};
     ::after {
       width: 100%;
     }

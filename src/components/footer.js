@@ -55,8 +55,8 @@ const SocialMediaLink = styled.a`
   padding: 0.25rem;
   text-shadow: none;
   background-image: none;
-  :first-child {
-    margin-left: 0.6rem;
+  :last-of-type {
+    margin-right: 0.6rem;
   }
   :hover {
     background-color: ${siteConfig.alternativeColor};
@@ -64,7 +64,7 @@ const SocialMediaLink = styled.a`
 `
 const NavItem = styled(Link)`
   text-decoration: none;
-  color: #003893;
+  color: ${siteConfig.brandColor};
   display: inline-block;
   white-space: nowrap;
   margin: 0 1vw;
@@ -81,13 +81,13 @@ const NavItem = styled(Link)`
     width: 0%;
     content: ".";
     color: transparent;
-    background: #dc143c;
+    background: ${siteConfig.alternativeColor};
     height: 1px;
     transition: all 0.4s ease-in;
   }
 
   :hover {
-    color: #dc143c;
+    color: ${siteConfig.alternativeColor};
     ::after {
       width: 100%;
     }
@@ -114,7 +114,7 @@ const Footer = () => {
             {" "}
             © {year} {siteConfig.author}
           </div>
-          <License></License>
+          {/* <License></License> */}
         </CopyRight>
         <div className="component-links">
           <FooterNavigation>

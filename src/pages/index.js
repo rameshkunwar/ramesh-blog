@@ -6,6 +6,7 @@ import { css } from "@emotion/core"
 import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
 import moment from "moment"
+import siteConfig from "../../site-config"
 
 export default function Home({ data }) {
   const IndividualPostWrapper = styled.div`
@@ -79,15 +80,15 @@ export default function Home({ data }) {
                       height: 2rem;
                       border-radius: 1rem;
                       padding: 0 0.8rem;
-                      color: #003893;
+                      color: ${siteConfig.brandColor};
                       margin-top: 0.2rem;
                       text-decoration: none !important;
                       text-shadow: none;
                       background-image: none;
                       &:hover {
                         cursor: pointer;
-                        color: #dc143c;
-                        background-color: rgb(0 56 147 / 0.2);
+                        color: ${siteConfig.alternativeColor};
+                        background-color: ${siteConfig.brandColor};
                         text-decoration: none;
                       }
                     `}

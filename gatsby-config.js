@@ -58,7 +58,7 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `content/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
+        icon: `/icons/android-chrome-512x512.png`, // This path is relative to the root of the site.
         crossOrigin: `use-credentials`,
       },
     },
