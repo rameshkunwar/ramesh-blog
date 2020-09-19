@@ -11,6 +11,9 @@ const Container = styled.div`
   max-width: 800px;
   padding: ${rhythm(2)};
   padding-top: ${rhythm(1 / 2)};
+  font-size: 1.5rem;
+  letter-spacing: 0.2px;
+  color: rgb(5, 6, 7);
   @media (max-width: 768px) {
     width: 100%;
     max-width: 100%;

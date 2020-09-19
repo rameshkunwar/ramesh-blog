@@ -1,8 +1,8 @@
 import Typography from "typography"
 import fairyGateTheme from "typography-theme-fairy-gates"
-fairyGateTheme.bodyFontFamily = ["Lato", "sans-serif"]
+fairyGateTheme.bodyFontFamily = ["merriweather", "serif"] //["Lato", "sans-serif"]
 fairyGateTheme.baseFontSize = "16px" //"22px"
-fairyGateTheme.baseLineHeight = "1.45" //"1.64"
+fairyGateTheme.baseLineHeight = "1.4" //"1.64"
 fairyGateTheme.bodyColor = "#0a0a23"
 
 const typography = new Typography(fairyGateTheme)
