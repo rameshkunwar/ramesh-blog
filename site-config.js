@@ -18,6 +18,7 @@ module.exports = {
     allPosts: "/allposts",
     contact: "/contact",
   },
+  lincenseLink: `https://creativecommons.org/licenses/by/4.0/`,
   social: {
     twitter: "rameshkunwar",
     github: "rameshkunwar",

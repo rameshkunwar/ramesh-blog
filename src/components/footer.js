@@ -12,15 +12,16 @@ const BlogFooter = styled.footer`
   box-sizing: border-box;
 `
 const FooterContent = styled.div`
-  height: 2.5rem;
   max-width: 900px;
   margin: 0 auto;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   min-height: 5.5rem;
   padding: 0 1rem;
   box-sizing: border-box;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `
 const FooterNavigation = styled.div`
   text-align: right;
@@ -30,20 +31,53 @@ const FooterNavigation = styled.div`
 `
 const SocialMedia = styled.div`
   font-style: italic;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   @media (min-width: 768.98px) {
     display: none;
   }
 `
 const CopyRight = styled.div`
   font-size: 1.2rem;
+  display: none;
+  @media (min-width: 768.98px) {
+    display: inline-block;
+  }
 `
 const License = styled.div`
   font-size: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
+`
+const CopyRightSmallDevice = styled.div`
+  display: none;
+  @media (max-width: 768.98px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+`
+const CopyRightTextSmallDevice = styled.div`
+  display: flex;
+  font-size: 1.2rem;
+  justify-content: center;
+`
+const LicenseSmall = styled.div`
+  font-size: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.3rem;
+  display: flex;
+  justify-content: center;
+`
+const LicenseLink = styled.a`
+  color: ${siteConfig.brandColor};
+  text-decoration: none;
+  :hover {
+    color: ${siteConfig.alternativeColor};
+    text-decoration: underline;
+  }
 `
 const SocialMediaLink = styled.a`
   box-sizing: border-box;
@@ -117,62 +151,75 @@ const Footer = () => {
             {" "}
             © {year} {siteConfig.author}
           </div>
-          {/* <License></License> */}
+          <License>
+            Licensed under{" "}
+            <LicenseLink href={siteConfig.lincenseLink} target="blank">
+              CC BY 4.0
+            </LicenseLink>
+          </License>
         </CopyRight>
-        <div className="component-links">
-          <FooterNavigation>
-            <NavItem to={siteConfig.links.home}>Home</NavItem>
-            <NavItem to={siteConfig.links.allPosts}>All posts</NavItem>
-            <NavItem to={siteConfig.links.about}>About</NavItem>
-            <NavItem to={siteConfig.links.contact}>Contact</NavItem>
-          </FooterNavigation>
-          <SocialMedia>
-            <SocialMediaLink
-              href={`mailto: ${siteConfig.authorEmail}`}
-              target="blank"
-              title={`Mail me`}
-            >
-              <SocialMediaImage alt="Email address" src="/icons/email.svg" />
-            </SocialMediaLink>
-            <SocialMediaLink
-              href={`https://twitter.com/${siteConfig.social.twitter}`}
-              target="blank"
-              title={`${siteConfig.author}'s Twitter profile`}
-            >
-              <SocialMediaImage
-                alt="Twitter profile"
-                src="/icons/twitter.svg"
-              />
-            </SocialMediaLink>
-            <SocialMediaLink
-              href={`https://www.linkedin.com/in/${siteConfig.social.linkedin}`}
-              target="blank"
-              title={`${siteConfig.author}'s Linkedin profile`}
-            >
-              <SocialMediaImage
-                alt="LinkedIn profile"
-                src="/icons/linkedin.svg"
-              />
-            </SocialMediaLink>
-            <SocialMediaLink
-              href={`https://stackoverflow.com/users/8515291/${siteConfig.social.stackoverflow}`}
-              target="blank"
-              title={`${siteConfig.author}'s Stackoverflow profile`}
-            >
-              <SocialMediaImage
-                alt="Stackoverflow profile"
-                src="/icons/stackoverflow.svg"
-              />
-            </SocialMediaLink>
-            <SocialMediaLink
-              href={`https://github.com/${siteConfig.social.github}`}
-              target="blank"
-              title={`${siteConfig.author}'s Github profile`}
-            >
-              <SocialMediaImage alt="Github profile" src="/icons/github.svg" />
-            </SocialMediaLink>
-          </SocialMedia>
-        </div>
+        <FooterNavigation>
+          <NavItem to={siteConfig.links.home}>Home</NavItem>
+          <NavItem to={siteConfig.links.allPosts}>All posts</NavItem>
+          <NavItem to={siteConfig.links.about}>About</NavItem>
+          <NavItem to={siteConfig.links.contact}>Contact</NavItem>
+        </FooterNavigation>
+        <SocialMedia>
+          <SocialMediaLink
+            href={`mailto: ${siteConfig.authorEmail}`}
+            target="blank"
+            title={`Mail me`}
+          >
+            <SocialMediaImage alt="Email address" src="/icons/email.svg" />
+          </SocialMediaLink>
+          <SocialMediaLink
+            href={`https://twitter.com/${siteConfig.social.twitter}`}
+            target="blank"
+            title={`${siteConfig.author}'s Twitter profile`}
+          >
+            <SocialMediaImage alt="Twitter profile" src="/icons/twitter.svg" />
+          </SocialMediaLink>
+          <SocialMediaLink
+            href={`https://www.linkedin.com/in/${siteConfig.social.linkedin}`}
+            target="blank"
+            title={`${siteConfig.author}'s Linkedin profile`}
+          >
+            <SocialMediaImage
+              alt="LinkedIn profile"
+              src="/icons/linkedin.svg"
+            />
+          </SocialMediaLink>
+          <SocialMediaLink
+            href={`https://stackoverflow.com/users/8515291/${siteConfig.social.stackoverflow}`}
+            target="blank"
+            title={`${siteConfig.author}'s Stackoverflow profile`}
+          >
+            <SocialMediaImage
+              alt="Stackoverflow profile"
+              src="/icons/stackoverflow.svg"
+            />
+          </SocialMediaLink>
+          <SocialMediaLink
+            href={`https://github.com/${siteConfig.social.github}`}
+            target="blank"
+            title={`${siteConfig.author}'s Github profile`}
+          >
+            <SocialMediaImage alt="Github profile" src="/icons/github.svg" />
+          </SocialMediaLink>
+        </SocialMedia>
+        <CopyRightSmallDevice>
+          {" "}
+          <CopyRightTextSmallDevice>
+            {" "}
+            © {year} {siteConfig.author}
+          </CopyRightTextSmallDevice>
+          <LicenseSmall>
+            Licensed under&nbsp;
+            <LicenseLink href={siteConfig.lincenseLink} target="blank">
+              CC BY 4.0
+            </LicenseLink>
+          </LicenseSmall>
+        </CopyRightSmallDevice>
       </FooterContent>
     </BlogFooter>
   )
