@@ -33,6 +33,14 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-178496486-1",
+        head: false,
+        defer: false,
+      },
+    },
 
     {
       resolve: `gatsby-source-filesystem`,
@@ -58,8 +66,24 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `/icons/android-chrome-512x512.png`, // This path is relative to the root of the site.
+        icon: `./content/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
         crossOrigin: `use-credentials`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: `https://kunwar.dk`,
+        sitemap: `https://kunwar.dk/sitemap.xml`,
+        output: `/robots.txt`,
+        env: {
+          development: {
+            policy: [{ userAgent: "*", disallow: ["/"] }],
+          },
+          production: {
+            policy: [{ userAgent: "*", allow: "/" }],
+          },
+        },
       },
     },
     `gatsby-plugin-sitemap`,

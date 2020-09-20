@@ -86,6 +86,14 @@ function SEO({ description, lang, meta, title, published, modified }) {
           name: `twitter:description`,
           content: metaDescription,
         },
+        {
+          name: `author`,
+          content: site.siteMetadata.author,
+        },
+        {
+          name: `keywords`,
+          content: `javascript",.net, .net core, blazor webassembly, .net 5, c#, react js, redux, clean code, CQRS, domain driven design`,
+        },
       ].concat(meta)}
     />
   )
@@ -100,5 +108,7 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  author: PropTypes.string,
+  keywords: PropTypes.string,
 }
 export default SEO

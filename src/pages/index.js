@@ -7,6 +7,7 @@ import styled from "@emotion/styled"
 import { rhythm } from "../utils/typography"
 import moment from "moment"
 import siteConfig from "../../site-config"
+import SEO from "../components/seo"
 
 export default function Home({ data }) {
   const IndividualPostWrapper = styled.div`
@@ -22,6 +23,11 @@ export default function Home({ data }) {
   `
   return (
     <Layout>
+      <SEO
+        title={siteConfig.title}
+        description={siteConfig.description}
+        author={siteConfig.author}
+      />
       <React.Fragment>
         {data.allMarkdownRemark.edges.map(({ node }) => (
           <IndividualPostWrapper key={node.id}>
