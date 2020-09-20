@@ -34,6 +34,9 @@ const SocialMedia = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @media (min-width: 768.98px) {
+    display: none;
+  }
 `
 const CopyRight = styled.div`
   font-size: 1.2rem;

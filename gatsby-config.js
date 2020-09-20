@@ -7,8 +7,8 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `My demo site title`,
-    description: `My demo site description so that Google can find it easily`,
+    title: `A hobby blog for a hungry soul - Ramesh's personal blog`,
+    description: `To teach is to learn twice - let's learn together`,
     author: `Ramesh Kunwar`,
     siteUrl: `https://kunwar.dk`,
   },
