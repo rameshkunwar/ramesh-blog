@@ -3,10 +3,13 @@ title: "first demo"
 created: "2020-09-06T19:39:46.823Z"
 modified: "2020-09-06T23:39:46.823Z"
 description: "A detail description of markdown with Gatsby and GraphQL"
-featuredImage: "../../images/blog/first-blog.jpg"
+featuredImage: "../../images/blog/blog-001-img01.jpg"
+imageCaption: "free-pixabay"
 slug: first-blog-post
 tags: ["javascript", "blog", "gatsby"]
 ---
+
+![Alt text here](../../images/blog/blog-001-img01.jpg "Image: Werner Moser/pixabay - bit.ly/3clqxme")
 
 ### What is Lorem Ipsum?
 

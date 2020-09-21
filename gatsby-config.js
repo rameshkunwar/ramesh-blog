@@ -24,6 +24,18 @@ module.exports = {
               terminal: "carbon",
             },
           },
+          `gatsby-remark-reading-time`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 700,
+              maxHeight: 390,
+              linkImagesToOriginal: true,
+              showCaptions: true,
+              withWebp: true,
+              srcSetBreakpoints: [200, 340, 520, 650, 890],
+            },
+          },
         ],
       },
     },

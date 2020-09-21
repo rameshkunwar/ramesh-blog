@@ -5,6 +5,7 @@ import { defineCustomElements as deckDeckGoHighlightElement } from "@deckdeckgo/
 import Navbar from "./navbar/navbar"
 import Footer from "./footer"
 import siteConfig from "../../site-config"
+import "./layout.css"
 
 deckDeckGoHighlightElement()
 

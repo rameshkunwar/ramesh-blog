@@ -1,13 +1,12 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import moment from "moment"
 
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
-  const featuredImgFluid = post.frontmatter.featuredImage.childImageSharp.fluid
+  //const featuredImgFluid = post.frontmatter.featuredImage.childImageSharp.fluid
   return (
     <Layout>
       <SEO
@@ -23,7 +22,8 @@ export default function BlogPost({ data }) {
           .format("DD-MMM-YYYY")
           .toUpperCase()}{" "}
       </span>
-      <Img fluid={featuredImgFluid} />
+      <span> {post.fields.readingTime.text} </span>
+      {/* <Img fluid={featuredImgFluid} /> */}
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
   )
@@ -33,6 +33,11 @@ export const query = graphql`
   query($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      fields {
+        readingTime {
+          text
+        }
+      }
       frontmatter {
         title
         description
@@ -41,7 +46,7 @@ export const query = graphql`
         created
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 650) {
+            fluid(maxWidth: 650, maxHeight: 390, quality: 90) {
               ...GatsbyImageSharpFluid
             }
           }
