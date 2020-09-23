@@ -7,6 +7,8 @@ featuredImage: "../../images/blog/blog-001-img01.jpg"
 imageCaption: "free-pixabay"
 slug: first-blog-post
 tags: ["javascript", "blog", "gatsby"]
+type: post
+blogMonth: September 2020
 ---
 
 ![Alt text here](../../images/blog/blog-001-img01.jpg "Image: Werner Moser/pixabay - bit.ly/3clqxme")

@@ -41,11 +41,12 @@ const NavItem = styled(Link)`
   }
 `
 const NavbarLinks = () => {
+  const { about, allPosts, contact } = siteConfig.links
   return (
     <>
-      <NavItem to="/about">About</NavItem>
-      <NavItem to="/allposts">All posts</NavItem>
-      <NavItem to="/contact">Contact</NavItem>
+      <NavItem to={about}>About</NavItem>
+      <NavItem to={allPosts}>All posts</NavItem>
+      <NavItem to={contact}>Contact</NavItem>
     </>
   )
 }

@@ -15,7 +15,7 @@ module.exports = {
   links: {
     home: "/",
     about: "/about",
-    allPosts: "/allposts",
+    allPosts: "/all-posts",
     contact: "/contact",
   },
   lincenseLink: `https://creativecommons.org/licenses/by/4.0/`,

@@ -6,6 +6,8 @@ description: "Testing second post after chaing blog and image root folder"
 featuredImage: "../../images/blog/second-blog.jpg"
 slug: second-blog-post
 tags: ["c#", ".net core"]
+type: post
+blogMonth: September 2020
 ---
 
 ### What is Lorem Ipsum?

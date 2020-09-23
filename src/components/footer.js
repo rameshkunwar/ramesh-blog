@@ -28,6 +28,10 @@ const FooterNavigation = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-height: 2rem;
+  @media (max-width: 768px) {
+    max-height: 4rem;
+  }
 `
 const SocialMedia = styled.div`
   font-style: italic;
