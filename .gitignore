@@ -58,6 +58,9 @@ typings/
 .cache/
 public
 
+#certificate folder
+.well-known/acme-challenge
+
 # Mac files
 .DS_Store
 
