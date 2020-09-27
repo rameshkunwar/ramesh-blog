@@ -4,8 +4,16 @@
   </a>
 </p>
 <h1 align="left">
- Ramesh's personal blog started with Gatsby's <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">hello-world starter</a>. This template comes with a skeleton project to kick-start a Gatsby-based project.
+ Ramesh's personal blog started with Gatsby's <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">hello-world starter</a>. Gatsby-starter-hello-world template comes with a skeleton to kick-start a Gatsby-based project.
 </h1>
+
+<h3>
+If you want to start your blog from the scratch, it is recommended you use the hello-world-starter template else, you can use this template which already comes with many settings and plugins (Warning: If you are new to Gatsby, it could be complex to start with someone's template).
+</h3>
+
+<h3>
+My recommendation is to use the <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">hello-world starter</a> template and follow Gatsby JS <a href="https://www.gatsbyjs.com/tutorial/">tutorial</a> for understanding Gatsby and GraphQL better. It will add authenticity to your project and you can always look this or other similar project for inspiration/help.
+</h3>
 
 This blog (major portion) has been created by following Gatsby JS <a href="https://www.gatsbyjs.com/tutorial/">tutorial</a>
 
