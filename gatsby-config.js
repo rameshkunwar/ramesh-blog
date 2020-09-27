@@ -85,8 +85,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: `https://blog.kunwar.dk`,
-        sitemap: `https://blog.kunwar.dk/sitemap.xml`,
+        host: `https://kunwar.dk`,
+        sitemap: `https://kunwar.dk/sitemap.xml`,
         output: `/robots.txt`,
         env: {
           development: {
