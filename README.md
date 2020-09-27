@@ -3,13 +3,11 @@
     <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
   </a>
 </p>
-<h1 align="center">
- Ramesh's personal blog started with Gatsby's [hello-world starter](https://github.com/gatsbyjs/gatsby-starter-hello-world). This template comes with a skeleton project to kick-start a Gatsby-based project.
+<h1 align="left">
+ Ramesh's personal blog started with Gatsby's <a href="https://github.com/gatsbyjs/gatsby-starter-hello-world">hello-world starter</a>. This template comes with a skeleton project to kick-start a Gatsby-based project.
 </h1>
 
-This blog (major portion) has been created by following Gatsby JS [tutorial](https://www.gatsbyjs.com/tutorial/)
-
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+This blog (major portion) has been created by following Gatsby JS <a href="https://www.gatsbyjs.com/tutorial/">tutorial</a>
 
 ## 🚀 Quick start
 
