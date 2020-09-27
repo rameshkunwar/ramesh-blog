@@ -19,6 +19,9 @@ const FooterContent = styled.div`
   min-height: 5.5rem;
   padding: 0 1rem;
   box-sizing: border-box;
+  @media (max-width: 500px) {
+    padding: 0;
+  }
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -65,11 +68,11 @@ const CopyRightSmallDevice = styled.div`
 `
 const CopyRightTextSmallDevice = styled.div`
   display: flex;
-  font-size: 1.2rem;
+  font-size: 1rem;
   justify-content: center;
 `
 const LicenseSmall = styled.div`
-  font-size: 1rem;
+  font-size: 0.8rem;
   margin-top: 0.2rem;
   margin-bottom: 0.3rem;
   display: flex;
@@ -133,11 +136,13 @@ const NavItem = styled(Link)`
       width: 100%;
     }
   }
-
   @media (max-width: 768px) {
     padding: 20px 0;
     font-size: 1.5rem;
     z-index: 6;
+  }
+  @media (max-width: 500px) {
+    font-size: 1.2rem;
   }
 `
 const SocialMediaImage = styled.img`

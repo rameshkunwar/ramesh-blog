@@ -4,3 +4,9 @@
   font-family: "Lato", serif;
   padding-left: 0.325rem;
 }
+
+@media (max-width: 500px) {
+  p {
+    font-size: 1.3rem;
+  }
+}

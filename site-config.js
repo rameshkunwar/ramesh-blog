@@ -33,4 +33,6 @@ module.exports = {
   fontHeadings: "",
   brandColor: "#003893",
   alternativeColor: "#C60C30", //"#dc143c",
+  paragraphFontSizeWeb: "1.3rem",
+  paragraphFontSizeMobile: "1.2rem",
 }

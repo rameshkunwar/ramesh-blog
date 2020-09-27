@@ -18,6 +18,9 @@ const Main = styled.div`
   max-width: 100%;
   padding: 0 1.5rem;
   box-sizing: border-box;
+  @media (max-width: 500px) {
+    padding: 0 0.5rem;
+  }
 `
 const MainHeader = styled.div`
   display: block;
@@ -27,6 +30,12 @@ const Headline = styled.h1`
   font-weight: bold;
   margin: 2rem 0;
   font-size: 2.7rem;
+`
+const Paragraph = styled.p`
+  font-size: ${siteConfig.paragraphFontSizeWeb};
+  @media (max-width: 500px) {
+    font-size: ${siteConfig.paragraphFontSizeMobile};
+  }
 `
 
 export default function About({ data }) {
@@ -43,12 +52,8 @@ export default function About({ data }) {
             <Headline>About me</Headline>
           </MainHeader>
 
-          <p
-            css={css`
-              font-size: 1.3rem;
-            `}
-          >
-            I work as a full-time full-stack developer. I work primarily with{" "}
+          <Paragraph>
+            I work as a full-stack developer. I work primarily with{" "}
             <a
               target="blank"
               href="https://www.azurebarry.com/dot-net-ecosystem-explained/"
@@ -59,12 +64,8 @@ export default function About({ data }) {
             primarily, React JS, Redux, jQuery, vanilla JavaScript, Typescript,
             CSS (SCSS), HTML, Bootstrap, and of course GatsbyJS on the
             front-end. Kubernetes and docker are my hobbies.
-          </p>
-          <p
-            css={css`
-              font-size: 1.3rem;
-            `}
-          >
+          </Paragraph>
+          <Paragraph>
             Probably, with the introduction of{" "}
             <a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor">
               Blazor WebAssembly
@@ -73,17 +74,13 @@ export default function About({ data }) {
             blurred. In the near future, I hope to use C# on both backend and
             frontend, though, at the same time I will be missing JavaScript,
             particularly React JS. Well, this is a topic, itself, for a blog!
-          </p>
+          </Paragraph>
 
-          <p
-            css={css`
-              font-size: 1.3rem;
-            `}
-          >
+          <Paragraph>
             I was born and raise in Nepal and currently live in Denmark. I have
             a bachelor's degree in Computer Science from Nepal and a Master
             degree in Computer Science from Sweden.
-          </p>
+          </Paragraph>
 
           <h3
             css={css`
@@ -93,11 +90,7 @@ export default function About({ data }) {
           >
             Why start a blog?
           </h3>
-          <p
-            css={css`
-              font-size: 1.3rem;
-            `}
-          >
+          <Paragraph>
             The field of web (or mobile app) development is continuously and
             rapidly changing. A developer not only need to sharpen ones skill
             but also need to learn new. And, I believe in
@@ -115,12 +108,8 @@ export default function About({ data }) {
             Let's learn together!! The main purpose of the blog is to share the
             knowledge I have acquired and learn new things with the world.
             Sharing is caring.
-          </p>
-          <p
-            css={css`
-              font-size: 1.3rem;
-            `}
-          >
+          </Paragraph>
+          <Paragraph>
             I would like to call myself a motivated developer, with architecture
             in mind. I am continuously sharpening my skills as well as learning
             new things that I need most. Most of the time, I follow a tutorial
@@ -129,18 +118,14 @@ export default function About({ data }) {
             teach someone the same thing, I would have to do more research, had
             to dig even dipper. I hope this blog will help me to be even better
             and could help others as well.
-          </p>
-          <p
-            css={css`
-              font-size: 1.3rem;
-            `}
-          >
+          </Paragraph>
+          <Paragraph>
             I do have architecture in my mind. I practice and try to strictly
             implement SOLID principles. I do practice Domain-Driven design in
             medium to large project. I believe, we developer, should not just
             write code to solve problems, but, should write code that human can
             understand, that is modular, and that is clean.
-          </p>
+          </Paragraph>
 
           <h3
             css={css`
@@ -150,16 +135,12 @@ export default function About({ data }) {
           >
             Beyond software development
           </h3>
-          <p
-            css={css`
-              font-size: 1.3rem;
-            `}
-          >
+          <Paragraph>
             I have a family and love to spend time with them. I am also a
             Manchester United fan and never miss a chance to watch the playing.
             Apart from football, I do watch Formula 1 championship almost every
             sunday and if possible, qualifying session on saturdays.
-          </p>
+          </Paragraph>
         </Main>
       </Container>
     </Layout>

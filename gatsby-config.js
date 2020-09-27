@@ -13,6 +13,14 @@ module.exports = {
     siteUrl: `https://kunwar.dk`,
   },
   plugins: [
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: "UA-178496486-1",
+    //     head: false,
+    //     defer: false,
+    //   },
+    // },
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-transformer-remark`,
@@ -45,15 +53,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-178496486-1",
-        head: false,
-        defer: false,
-      },
-    },
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {
