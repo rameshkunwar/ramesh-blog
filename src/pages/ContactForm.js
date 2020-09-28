@@ -16,7 +16,7 @@ const FormControl = styled.input`
   color: ${siteConfig.brandColor};
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid ${siteConfig.brandColor};
+  border: 1px solid #ced4da;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   margin-bottom: 1.5rem;

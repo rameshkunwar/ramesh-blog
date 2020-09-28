@@ -37,6 +37,10 @@ const Paragraph = styled.p`
     font-size: ${siteConfig.paragraphFontSizeMobile};
   }
 `
+const LI = styled.li`
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+`
 
 export default function About({ data }) {
   const { title, description } = data.site.siteMetadata
@@ -53,32 +57,32 @@ export default function About({ data }) {
           </MainHeader>
 
           <Paragraph>
-            I work as a full-stack developer. I work primarily with{" "}
+            I am a software developer, specialized as a full-stack developer. I
+            work primarily with{" "}
             <a
               target="blank"
               href="https://www.azurebarry.com/dot-net-ecosystem-explained/"
             >
               .NET
             </a>{" "}
-            ecosystem on the back-end (C# as primary backend language) and
-            primarily, React JS, Redux, jQuery, vanilla JavaScript, Typescript,
-            CSS (SCSS), HTML, Bootstrap, and of course GatsbyJS on the
-            front-end. Kubernetes and docker are my hobbies.
+            ecosystem on the back-end and React JS, Redux, jQuery, vanilla
+            JavaScript, Typescript, CSS (SCSS), HTML, Bootstrap, and of course
+            GatsbyJS on the front-end. Whenever I have time, I look into
+            Microsoft Azure (Kubernetes being my favorite).
           </Paragraph>
           <Paragraph>
-            Probably, with the introduction of{" "}
+            Probably, with the advent of{" "}
             <a href="https://dotnet.microsoft.com/apps/aspnet/web-apps/blazor">
               Blazor WebAssembly
             </a>
-            , distinction between backend and frontend has, somewhat, been
+            , distinction between backend and front-end has, somewhat, been
             blurred. In the near future, I hope to use C# on both backend and
-            frontend, though, at the same time I will be missing JavaScript,
-            particularly React JS. Well, this is a topic, itself, for a blog!
+            frontend, though, at the same time I will be missing JavaScript!
           </Paragraph>
 
           <Paragraph>
-            I was born and raise in Nepal and currently live in Denmark. I have
-            a bachelor's degree in Computer Science from Nepal and a Master
+            I was born and raised in Nepal, and currently live in Denmark. I
+            have a bachelor's degree in Computer Science from Nepal and a Master
             degree in Computer Science from Sweden.
           </Paragraph>
 
@@ -106,25 +110,82 @@ export default function About({ data }) {
               To teach is to learn twice!
             </span>
             Let's learn together!! The main purpose of the blog is to share the
-            knowledge I have acquired and learn new things with the world.
-            Sharing is caring.
+            knowledge I have acquired and learn new things.{" "}
+            <i>Sharing is caring.</i>
           </Paragraph>
+
+          <h3
+            css={css`
+              font-family: Noto Sans, sans-serif;
+              font-weight: bold;
+            `}
+          >
+            Coder, developer or architect?
+          </h3>
           <Paragraph>
-            I would like to call myself a motivated developer, with architecture
-            in mind. I am continuously sharpening my skills as well as learning
-            new things that I need most. Most of the time, I follow a tutorial
-            or read books/articles about the subject matter. Then, I try to
-            build something out of it. However, I found out that If I were to
-            teach someone the same thing, I would have to do more research, had
-            to dig even dipper. I hope this blog will help me to be even better
-            and could help others as well.
+            I would like to call myself a motivated developer learning to become
+            an architect one day. Currently, I am focused on learning and
+            partially implementing Domain-Driven Design, SOLID principles and
+            clean architecture. I am also very keen on learning one of the
+            message queuing system (Kafka or RabbitMQ). Last but not the least,
+            actor based systems such as Erlang has fascinated me. Fortunately,
+            similar system called Akka.NET has been ported to the .net world. I
+            firmly believe, Akka.net is a good alternative to a build a
+            highly-available highly-scalable system such as Erlang.
           </Paragraph>
+
+          <h3
+            css={css`
+              font-family: Noto Sans, sans-serif;
+              font-weight: bold;
+            `}
+          >
+            What do I work with and what I plan to learn?
+          </h3>
           <Paragraph>
-            I do have architecture in my mind. I practice and try to strictly
-            implement SOLID principles. I do practice Domain-Driven design in
-            medium to large project. I believe, we developer, should not just
-            write code to solve problems, but, should write code that human can
-            understand, that is modular, and that is clean.
+            <h4 style={{ fontSize: "1.2rem", marginBottom: ".5rem" }}>
+              Back-end
+            </h4>
+            <ul>
+              <LI>.NET Framework &amp; .NET Core with C#</LI>
+              <LI>EntityFramework 6+, EF Core, Dapper</LI>
+              <LI>
+                Inversion of Control Container: Castle Windsor for .net
+                Framework &amp;{" "}
+              </LI>
+              <LI>Message broker/queue: RabbitMQ</LI>
+              <LI>
+                Akka.NET for high availability &amp; scalability (learning)
+              </LI>
+              <LI> MS SQL Server, MySQL</LI>
+              <LI>MSTest V2 for testing</LI>
+            </ul>
+            <h4 style={{ fontSize: "1.2rem", marginBottom: ".5rem" }}>
+              Front-end
+            </h4>
+            <ul>
+              <LI>React JS, Redux </LI>
+              <LI>Vanilla JavaScript (ES2015+), jQuery, and Typescript</LI>
+              <LI>SCSS, CSS, Html, Bootstrap, Material Design</LI>
+              <LI>Storybook for UI and Jest for JavaScript testing</LI>
+              <LI>React Native (learning)</LI>
+              <LI>Blazor web-assembly (learning)</LI>
+            </ul>
+            <h4 style={{ fontSize: "1.2rem", marginBottom: ".5rem" }}>
+              Working environment, tools
+            </h4>
+            <ul>
+              <LI>
+                Windows OS (.NET 5 onward, Linux environment high probability){" "}
+              </LI>
+              <LI>Visual Studio 2019</LI>
+              <LI>Visual Studio Code for front-end</LI>
+              <LI>MS SQL Server Management Studio &amp; MySQL Workbench</LI>
+              <LI>
+                Lenovo Thinkpad T490 (primary) &amp; Fujitsu Siemens Q920
+                (secondary) NB: Home working
+              </LI>
+            </ul>
           </Paragraph>
 
           <h3
@@ -137,9 +198,9 @@ export default function About({ data }) {
           </h3>
           <Paragraph>
             I have a family and love to spend time with them. I am also a
-            Manchester United fan and never miss a chance to watch the playing.
+            Manchester United fan and never miss a chance to watch them playing.
             Apart from football, I do watch Formula 1 championship almost every
-            sunday and if possible, qualifying session on saturdays.
+            sunday and if possible, qualifying sessions on saturdays.
           </Paragraph>
         </Main>
       </Container>
