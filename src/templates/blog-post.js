@@ -7,6 +7,7 @@ import moment from "moment"
 
 const Headline = styled.h1`
   margin-bottom: 1.4rem;
+  margin-top: 1.4rem;
 `
 const DateAndTimeToRead = styled.span`
   font-size: 1rem;
