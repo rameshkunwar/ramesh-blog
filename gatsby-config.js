@@ -11,6 +11,7 @@ module.exports = {
     description: `To teach is to learn twice - let's learn together`,
     author: `Ramesh Kunwar`,
     siteUrl: `https://kunwar.dk`,
+    authorImage: `/icons/author_image.jpeg`,
   },
   plugins: [
     // {
@@ -77,7 +78,8 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `./content/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
+        //icon: `./content/images/android-chrome-512x512.png`, // This path is relative to the root of the site.
+        icon: `./static/icons/android-chrome-512x512.png`,
         crossOrigin: `use-credentials`,
       },
     },

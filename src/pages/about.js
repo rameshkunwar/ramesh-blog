@@ -43,7 +43,6 @@ const LI = styled.li`
 `
 
 export default function About({ data }) {
-  const { title, description } = data.site.siteMetadata
   return (
     <Layout>
       <SEO

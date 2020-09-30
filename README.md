@@ -58,10 +58,9 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
     |___ content
     ├── .gitignore
     ├── .prettierrc
-    ├── gatsby-browser.js
     ├── gatsby-config.js
     ├── gatsby-node.js
-    ├── gatsby-ssr.js
+    ├── yarn.lock
     ├── LICENSE
     ├── package-lock.json
     ├── package.json
@@ -83,7 +82,7 @@ A quick look at the top-level files and directories you'll see in a Gatsby proje
 
 8.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
 
-9.  **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+9.  **`package-lock.json & yarn.lock`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
 
 10. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
 

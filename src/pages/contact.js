@@ -1,9 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import siteConfig from "../../site-config"
 import ContactForm from "./ContactForm"
 
 const Container = styled.div`

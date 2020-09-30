@@ -12,6 +12,7 @@ function SEO({ description, lang, meta, title, published, modified }) {
             title
             description
             author
+            authorImage
           }
         }
       }
@@ -44,7 +45,7 @@ function SEO({ description, lang, meta, title, published, modified }) {
         },
         {
           property: `og:image`,
-          content: `https://pbs.twimg.com/profile_images/486116803232280576/5dDamw0Y_400x400.jpeg`,
+          content: site.siteMetadata.authorImage,
         },
         {
           property: `article:published_time`,

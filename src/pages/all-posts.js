@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "../components/layout"
-import Img from "gatsby-image"
 import { graphql, Link } from "gatsby"
 import { css } from "@emotion/core"
 import styled from "@emotion/styled"
@@ -92,7 +91,8 @@ export default function About({ data }) {
                       >
                         {moment(node.frontmatter.modified).format(
                           "DD-MMM-YYYY"
-                        )}
+                        )}{" "}
+                        . {node.fields.readingTime.text}
                       </div>
                     </Link>
                     <div
@@ -111,13 +111,12 @@ export default function About({ data }) {
                         `}
                       >
                         {node.frontmatter.tags.map((tag, i) => [
-                          <a
+                          <button
                             key={`tag-${i}`}
                             css={css`
-                              font-size: 1.2rem;
+                              font-size: 1rem;
                               margin-right: 0.5rem;
                               background-color: rgb(0 56 147 / 0.2);
-                              height: 2rem;
                               border-radius: 1rem;
                               padding: 0 0.8rem;
                               color: ${siteConfig.brandColor};
@@ -125,6 +124,7 @@ export default function About({ data }) {
                               text-decoration: none !important;
                               text-shadow: none;
                               background-image: none;
+                              border-width: 0;
                               &:hover {
                                 cursor: pointer;
                                 color: ${siteConfig.alternativeColor};
@@ -132,10 +132,9 @@ export default function About({ data }) {
                                 text-decoration: none;
                               }
                             `}
-                            href="#"
                           >
                             <span>{tag}</span>
-                          </a>,
+                          </button>,
                         ])}
                       </div>
                     </div>
@@ -167,6 +166,9 @@ export const query = graphql`
             }
             fields {
               slug
+              readingTime {
+                text
+              }
             }
           }
         }
@@ -174,80 +176,3 @@ export const query = graphql`
     }
   }
 `
-{
-  /* {data.allMarkdownRemark.edges.map(({ node }) => (
-          <IndividualPostWrapper key={node.id}>
-            <Link
-              to={node.fields.slug}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
-              <h3
-                css={css`
-                  margin-bottom: ${rhythm(1 / 4)};
-                `}
-              >
-                {" "}
-                {node.frontmatter.title}
-                <span
-                  css={css`
-                    color: #bbb;
-                  `}
-                >
-                  {" "}
-                  -{" "}
-                  {moment(node.frontmatter.modified)
-                    .format("DD-MMM-YYYY")
-                    .toUpperCase()}{" "}
-                </span>
-              </h3>
-            </Link>
-            <div
-              css={css`
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                align-items: center;
-              `}
-            >
-              <div
-                css={css`
-                  margin: 0.4rem 0;
-                  display: wrap;
-                  flex-wrap: wrap;
-                `}
-              >
-                {node.frontmatter.tags.map((tag, i) => [
-                  <a
-                    key={`tag-${i}`}
-                    css={css`
-                      font-size: 1.2rem;
-                      margin-right: 0.5rem;
-                      background-color: rgb(0 56 147 / 0.2);
-                      height: 2rem;
-                      border-radius: 1rem;
-                      padding: 0 0.8rem;
-                      color: ${siteConfig.brandColor};
-                      margin-top: 0.2rem;
-                      text-decoration: none !important;
-                      text-shadow: none;
-                      background-image: none;
-                      &:hover {
-                        cursor: pointer;
-                        color: ${siteConfig.alternativeColor};
-                        background-color: ${siteConfig.brandColor};
-                        text-decoration: none;
-                      }
-                    `}
-                    href="#"
-                  >
-                    <span>{tag}</span>
-                  </a>,
-                ])}
-              </div>
-            </div>
-          </IndividualPostWrapper>
-        ))} */
-}

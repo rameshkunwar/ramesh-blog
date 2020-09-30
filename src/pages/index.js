@@ -21,6 +21,12 @@ export default function Home({ data }) {
       padding: 0.5rem;
     }
   `
+  const DateAndReadTime = styled.div`
+    // margin-bottom: ${rhythm(1 / 3)};
+    margin-top: ${rhythm(1 / 3)};
+    font-size: 0.8rem;
+    font-weight: 500;
+  `
   return (
     <Layout>
       <SEO
@@ -48,19 +54,12 @@ export default function Home({ data }) {
               >
                 {" "}
                 {node.frontmatter.title}
-                <span
-                  css={css`
-                    color: #bbb;
-                  `}
-                >
-                  {" "}
-                  -{" "}
-                  {moment(node.frontmatter.modified)
-                    .format("DD-MMM-YYYY")
-                    .toUpperCase()}{" "}
-                </span>
               </h3>
             </Link>
+            <DateAndReadTime>
+              {moment(node.frontmatter.modified).format("DD-MMM-YYYY")} .{" "}
+              {node.fields.readingTime.text}
+            </DateAndReadTime>
             <div
               css={css`
                 display: flex;
@@ -71,13 +70,13 @@ export default function Home({ data }) {
             >
               <div
                 css={css`
-                  margin: 0.4rem 0;
+                  margin: 0.6rem 0;
                   display: wrap;
                   flex-wrap: wrap;
                 `}
               >
                 {node.frontmatter.tags.map((tag, i) => [
-                  <a
+                  <button
                     key={`tag-${i}`}
                     css={css`
                       font-size: 1.2rem;
@@ -91,6 +90,7 @@ export default function Home({ data }) {
                       text-decoration: none !important;
                       text-shadow: none;
                       background-image: none;
+                      border-width: 0;
                       &:hover {
                         cursor: pointer;
                         color: ${siteConfig.alternativeColor};
@@ -98,14 +98,21 @@ export default function Home({ data }) {
                         text-decoration: none;
                       }
                     `}
-                    href="#"
                   >
                     <span>{tag}</span>
-                  </a>,
+                  </button>,
                 ])}
               </div>
             </div>
-            <p> {node.excerpt} </p>
+            <Link
+              to={node.fields.slug}
+              css={css`
+                text-decoration: none;
+                color: inherit;
+              `}
+            >
+              <p> {node.excerpt} </p>
+            </Link>
           </IndividualPostWrapper>
         ))}
       </React.Fragment>
@@ -136,6 +143,9 @@ export const query = graphql`
           }
           fields {
             slug
+            readingTime {
+              text
+            }
           }
           excerpt(pruneLength: 140)
           html

@@ -1,12 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
+import styled from "@emotion/styled"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import moment from "moment"
 
+const Headline = styled.h1`
+  margin-bottom: 1.4rem;
+`
+const DateAndTimeToRead = styled.span`
+  font-size: 1rem;
+  font-weight: 500;
+`
 export default function BlogPost({ data }) {
   const post = data.markdownRemark
-  //const featuredImgFluid = post.frontmatter.featuredImage.childImageSharp.fluid
+
   return (
     <Layout>
       <SEO
@@ -15,14 +23,12 @@ export default function BlogPost({ data }) {
         published={post.frontmatter.created}
         modified={post.frontmatter.modified}
       />
-      <h1> {post.frontmatter.title} </h1>
-      <span>
-        {" "}
-        {moment(post.frontmatter.modified)
-          .format("DD-MMM-YYYY")
-          .toUpperCase()}{" "}
-      </span>
-      <span> {post.fields.readingTime.text} </span>
+      <Headline> {post.frontmatter.title} </Headline>
+      <DateAndTimeToRead>
+        {moment(post.frontmatter.modified).format("DD-MMM-YYYY")} .{" "}
+        {post.fields.readingTime.text}.
+      </DateAndTimeToRead>
+
       {/* <Img fluid={featuredImgFluid} /> */}
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
     </Layout>
@@ -52,7 +58,7 @@ export const query = graphql`
           }
         }
       }
-      excerpt(pruneLength: 140)
+      excerpt(pruneLength: 150)
     }
   }
 `

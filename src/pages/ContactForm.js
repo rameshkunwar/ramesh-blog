@@ -1,5 +1,4 @@
 import React, { useState } from "react"
-import { Link } from "gatsby"
 import Axios from "axios"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core"
