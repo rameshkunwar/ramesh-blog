@@ -8,12 +8,11 @@ import siteConfig from "../../site-config"
 const Container = styled.div`
  display:flex;
  min-height:74vh;
- margin-top:0;
+ margin-top:2rem;
  font-family: 'merriweather',serif;
   }
 `
 const Main = styled.div`
-  order: 2;
   flex: 0 0 740px;
   max-width: 100%;
   padding: 0 1.5rem;
@@ -24,11 +23,12 @@ const Main = styled.div`
 `
 const MainHeader = styled.div`
   display: block;
+  margin-bottom: 2rem;
 `
 const Headline = styled.h1`
   font-family: Noto Sans, sans-serif;
   font-weight: bold;
-  margin: 2rem 0;
+  margin: 0 0;
   font-size: 2.7rem;
 `
 const Paragraph = styled.p`

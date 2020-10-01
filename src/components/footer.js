@@ -16,8 +16,9 @@ const FooterContent = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  min-height: 5.5rem;
+  // min-height: 5.5rem;
   padding: 0 1rem;
+  margin-top: 0.7rem;
   box-sizing: border-box;
   @media (max-width: 500px) {
     padding: 0;

@@ -11,7 +11,6 @@ import SEO from "../components/seo"
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
   box-shadow: inset 0 0 0 1px #dae4ed, 0 5px 15px -5px rgba(0, 0, 0, 0.1);
-  margin-top: 1rem;
   background: #fff;
   overflow: hidden;
   padding: 1rem;
@@ -27,8 +26,7 @@ const Container = styled.div`
   }
 `
 const Main = styled.div`
-  order: 2;
-  flex: 0 0 740px;
+  flex: 0 0 800px;
   max-width: 100%;
   padding: 0 1rem;
   box-sizing: border-box;

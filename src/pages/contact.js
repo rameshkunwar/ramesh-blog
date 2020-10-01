@@ -7,24 +7,24 @@ import ContactForm from "./ContactForm"
 const Container = styled.div`
  display:flex;
  min-height:74vh;
- margin-top:0;
+ margin-top:2rem;
  font-family: 'merriweather',serif;
   }
 `
 const Main = styled.div`
-  order: 2;
-  flex: 0 0 740px;
+  flex: 0 0 800px;
   max-width: 100%;
   padding: 0 1.5rem;
   box-sizing: border-box;
 `
 const MainHeader = styled.div`
   display: block;
+  margin-bottom: 2rem;
 `
 const Headline = styled.h1`
   font-family: Noto Sans, sans-serif;
   font-weight: bold;
-  margin: 2rem 0;
+  margin: 0 0;
   font-size: 2.7rem;
 `
 
