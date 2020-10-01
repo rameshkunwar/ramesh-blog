@@ -14,14 +14,14 @@ module.exports = {
     authorImage: `/icons/author_image.jpeg`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-178496486-1",
-        head: false,
-        defer: false,
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: "UA-178496486-1",
+    //     head: false,
+    //     defer: false,
+    //   },
+    // },
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-transformer-remark`,

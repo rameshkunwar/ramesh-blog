@@ -39,7 +39,7 @@ const FooterNavigation = styled.div`
 `
 const SocialMedia = styled.div`
   font-style: italic;
-  margin-top: 0.5rem;
+  margin-top: 1.3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,7 +112,7 @@ const NavItem = styled(Link)`
   color: ${siteConfig.brandColor};
   display: inline-block;
   white-space: nowrap;
-  margin: 0 1vw;
+  margin: 0 0.5rem;
   transition: all 200ms ease-in;
   position: relative;
   text-shadow: unset !important;
@@ -138,7 +138,7 @@ const NavItem = styled(Link)`
     }
   }
   @media (max-width: 768px) {
-    padding: 20px 0;
+    padding: 0;
     font-size: 1.5rem;
     z-index: 6;
   }
