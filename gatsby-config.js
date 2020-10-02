@@ -14,14 +14,14 @@ module.exports = {
     authorImage: `/icons/author_image.jpeg`,
   },
   plugins: [
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: "UA-178496486-1",
-    //     head: false,
-    //     defer: false,
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: "UA-178496486-1",
+        head: false,
+        defer: false,
+      },
+    },
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-transformer-remark`,
@@ -103,6 +103,16 @@ module.exports = {
       resolve: `gatsby-plugin-sitemap`,
       options: {
         exclude: [`/ContactForm/`, `/file-demo/`],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-gdpr-cookies`,
+      options: {
+        googleAnalytics: {
+          trackingId: "UA-178496486-1",
+        },
+        // Defines the environments where the tracking should be available  - default is ["production"]
+        environments: ["development"],
       },
     },
     `gatsby-plugin-offline`,

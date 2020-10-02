@@ -6,6 +6,7 @@ import Navbar from "./navbar/navbar"
 import Footer from "./footer"
 import siteConfig from "../../site-config"
 import "./layout.css"
+import CookieConsent from "react-cookie-consent"
 
 deckDeckGoHighlightElement()
 
@@ -110,6 +111,51 @@ export default function Layout({ children }) {
       <Navbar />
       <Container>{children}</Container>
       <Footer />
+      <CookieConsent
+        location="bottom"
+        buttonText="Accept"
+        declineButtonText="Decline"
+        enableDeclineButton
+        flipButtons={true}
+        cookieName="gatsby-gdpr-google-analytics"
+        cookieValue={true}
+        declineCookieValue={false}
+        style={{
+          backgroundColor: "#ffffff",
+          color: "#000000",
+          fontSize: "15px",
+          fontFamily: "Molengo",
+          boxShadow: "rgba(0, 0, 0, 0.5) 0px 9px 10px 5px",
+          borderTop: "1px solid #cbd6e2",
+        }}
+        buttonStyle={{
+          color: "#ffffff",
+          backgroundColor: "#000000",
+          borderRadius: "3px",
+          fontSize: "15px",
+        }}
+        declineButtonStyle={{
+          color: "#000000",
+          backgroundColor: "#ffffff",
+          borderRadius: "3px",
+          border: "1px solid #000000",
+          fontSize: "15px",
+        }}
+        expires={150}
+      >
+        This website stores cookies on your computer. These cookies are used to
+        collect information about how you interact with this website and allow
+        us to remember you.
+        <br />
+        We use this information in order to improve and customize your browsing
+        experience and for analytics and metrics about our visitors on this
+        website.
+        <br />
+        <br />
+        If you decline, your information won’t be tracked when you visit this
+        website. A single cookie will be used in your browser to remember your
+        preference not to be tracked.
+      </CookieConsent>
     </React.Fragment>
   )
 }
