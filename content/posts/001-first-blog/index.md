@@ -5,7 +5,7 @@ modified: "2020-09-30T22:39:46.823"
 description: "How I ended up creating my blog using Gatsby JS - A story about my blog"
 featuredImage: "../../images/blog/blog-001-img01.jpg"
 imageCaption: "free-pixabay"
-slug: first-blog-post
+slug: 001-first-blog-post
 tags: ["inspiration", "blog", "Gatsby"]
 type: post
 blogMonth: September 2020

@@ -14,14 +14,6 @@ module.exports = {
     authorImage: `/icons/author_image.jpeg`,
   },
   plugins: [
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: "UA-178496486-1",
-        head: false,
-        defer: false,
-      },
-    },
     `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-transformer-remark`,
@@ -110,11 +102,21 @@ module.exports = {
       options: {
         googleAnalytics: {
           trackingId: "UA-178496486-1",
+          cookieName: "gatsby-gdpr-google-analytics", // default
+          anonymize: true, // default
         },
         // Defines the environments where the tracking should be available  - default is ["production"]
-        environments: ["development"],
+        environments: ["production", "development"],
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: "UA-178496486-1",
+    //     head: false,
+    //     defer: false,
+    //   },
+    // },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,

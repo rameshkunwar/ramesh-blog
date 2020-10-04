@@ -120,36 +120,40 @@ export default function Layout({ children }) {
         cookieName="gatsby-gdpr-google-analytics"
         cookieValue={true}
         declineCookieValue={false}
+        sameSite="none"
         style={{
           backgroundColor: "#ffffff",
           color: "#000000",
           fontSize: "15px",
-          fontFamily: "Molengo",
+          fontFamily: "'merriweather',serif",
           boxShadow: "rgba(0, 0, 0, 0.5) 0px 9px 10px 5px",
           borderTop: "1px solid #cbd6e2",
         }}
         buttonStyle={{
           color: "#ffffff",
-          backgroundColor: "#000000",
+          backgroundColor: "#003893",
           borderRadius: "3px",
-          fontSize: "15px",
+          fontSize: "1rem",
         }}
         declineButtonStyle={{
-          color: "#000000",
+          color: "#C60C30",
           backgroundColor: "#ffffff",
           borderRadius: "3px",
-          border: "1px solid #000000",
-          fontSize: "15px",
+          border: "1px solid #C60C30",
+          fontSize: "1rem",
         }}
         expires={150}
       >
-        This website stores cookies on your computer. These cookies are used to
-        collect information about how you interact with this website and allow
-        us to remember you.
+        This website stores cookies related to Google Analytics on your
+        computer. These cookies are used to measure how users interact with
+        website content.{" "}
+        <a href="https://support.google.com/analytics/answer/6004245">
+          Google Analytics data privacy & security
+        </a>
         <br />
-        We use this information in order to improve and customize your browsing
-        experience and for analytics and metrics about our visitors on this
-        website.
+        We use this information in order to improve your browsing experience and
+        for analytics and metrics about our visitors on this website.{" "}
+        <strong> This is a non-profit blog site.</strong>
         <br />
         <br />
         If you decline, your information won’t be tracked when you visit this

@@ -7,6 +7,7 @@ import { rhythm } from "../utils/typography"
 import moment from "moment"
 import siteConfig from "../../site-config"
 import SEO from "../components/seo"
+import { TO_POST } from "../routes/path"
 
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
@@ -63,7 +64,7 @@ export default function About({ data }) {
                 {grp.edges.map(({ node }) => (
                   <IndividualPostWrapper key={node.id}>
                     <Link
-                      to={node.fields.slug}
+                      to={TO_POST({ slug: node.frontmatter.slug })}
                       css={css`
                         text-decoration: none;
                         color: inherit;
@@ -160,6 +161,7 @@ export const query = graphql`
             frontmatter {
               title
               modified
+              slug
               tags
             }
             fields {

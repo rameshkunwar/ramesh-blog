@@ -8,6 +8,7 @@ import { rhythm } from "../utils/typography"
 import moment from "moment"
 import siteConfig from "../../site-config"
 import SEO from "../components/seo"
+import { TO_POST } from "../routes/path"
 
 export default function Home({ data }) {
   const IndividualPostWrapper = styled.div`
@@ -51,7 +52,8 @@ margin-top:2rem;
             {data.allMarkdownRemark.edges.map(({ node }) => (
               <IndividualPostWrapper key={node.id}>
                 <Link
-                  to={node.fields.slug}
+                  // to={node.fields.slug}
+                  to={TO_POST({ slug: node.frontmatter.slug })}
                   css={css`
                     text-decoration: none;
                     color: inherit;
@@ -147,6 +149,7 @@ export const query = graphql`
           frontmatter {
             title
             description
+            slug
             tags
             modified
             featuredImage {
