@@ -5,6 +5,22 @@ module.exports = {
   C#, asp.net mvc, .net core, .net 5, blazor webassembly, javascript, React JS, Redux, Gatsby, CQRS, domain driven design, clean code `,
   siteUrl: "https://github.com/rameshkunwar/GatsbyGraphQL",
   footerText: `Licensed under <a href="http://creativecommons.org/licenses/by/4.0/"> CC BY 4.0</a>`,
+  tags: `javascript,.net, .net core, blazor webassembly, .net 5, c#, react js, redux, clean code, CQRS, domain driven design`,
+  keywords: [
+    "javascript",
+    "es6",
+    ".net",
+    ".net core",
+    "blazor web assembly",
+    "react js",
+    "redux",
+    "c#",
+    "software architecture",
+    "domain-driven design",
+    "cqrs",
+    "clean code",
+    "react js",
+  ],
 
   // Blog Author Info:
   author: "Ramésh Kunwar",

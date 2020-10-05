@@ -23,6 +23,9 @@ export default function BlogPost({ data }) {
         description={post.excerpt}
         published={post.frontmatter.created}
         modified={post.frontmatter.modified}
+        keywords={post.frontmatter.tags.join(", ")}
+        articleUrl={`https://kunwar.dk/posts/${post.frontmatter.slug}`}
+        articleImage={`https://kunwar.dk${post.frontmatter.featuredImage.childImageSharp.fluid.src}`}
       />
       <Headline> {post.frontmatter.title} </Headline>
       <DateAndTimeToRead>
@@ -51,6 +54,7 @@ export const query = graphql`
         tags
         modified
         created
+        slug
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 650, maxHeight: 390, quality: 90) {

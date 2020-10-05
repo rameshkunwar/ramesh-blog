@@ -3,7 +3,17 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function SEO({ description, lang, meta, title, published, modified }) {
+function SEO({
+  description,
+  lang,
+  meta,
+  title,
+  published,
+  modified,
+  keywords,
+  articleUrl,
+  articleImage,
+}) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -20,6 +30,11 @@ function SEO({ description, lang, meta, title, published, modified }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+
+  const image =
+    articleImage === null || articleImage === undefined
+      ? site.siteMetadata.authorImage
+      : articleImage
 
   return (
     <Helmet
@@ -41,11 +56,11 @@ function SEO({ description, lang, meta, title, published, modified }) {
         },
         {
           property: `og:url`,
-          content: `https://kunwar.dk`,
+          content: articleUrl,
         },
         {
           property: `og:image`,
-          content: site.siteMetadata.authorImage,
+          content: image,
         },
         {
           property: `article:published_time`,
@@ -57,16 +72,20 @@ function SEO({ description, lang, meta, title, published, modified }) {
         },
         {
           property: `article:tag`,
-          content: [
-            "javascript",
-            "es6",
-            ".net",
-            "c#",
-            "software architecture",
-            "clean code",
-            "react js",
-          ],
+          content: keywords,
         },
+        // {
+        //   property: `article:tag`,
+        //   content: [
+        //     "javascript",
+        //     "es6",
+        //     ".net",
+        //     "c#",
+        //     "software architecture",
+        //     "clean code",
+        //     "react js",
+        //   ],
+        // },
         {
           property: `og:type`,
           content: `website`,
@@ -77,11 +96,15 @@ function SEO({ description, lang, meta, title, published, modified }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: `@rameshkunwar`,
         },
         {
           name: `twitter:title`,
           content: title,
+        },
+        {
+          name: `twitter:url`,
+          content: articleUrl,
         },
         {
           name: `twitter:description`,
@@ -91,10 +114,10 @@ function SEO({ description, lang, meta, title, published, modified }) {
           name: `author`,
           content: site.siteMetadata.author,
         },
-        {
-          name: `keywords`,
-          content: `javascript",.net, .net core, blazor webassembly, .net 5, c#, react js, redux, clean code, CQRS, domain driven design`,
-        },
+        // {
+        //   name: `keywords`,
+        //   content: siteConfig.tags,
+        // },
       ].concat(meta)}
     />
   )
@@ -111,5 +134,7 @@ SEO.propTypes = {
   title: PropTypes.string.isRequired,
   author: PropTypes.string,
   keywords: PropTypes.string,
+  articleUrl: PropTypes.string,
+  articleImage: PropTypes.string,
 }
 export default SEO

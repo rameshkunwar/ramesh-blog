@@ -49,6 +49,8 @@ export default function About({ data }) {
         title={`All posts`}
         description={`List of all posts`}
         author={`Ramesh Kunwar`}
+        keywords={siteConfig.tags}
+        articleUrl={`https://kunwar.dk`}
       />
       <Container>
         <Main>
@@ -56,13 +58,13 @@ export default function About({ data }) {
             {" "}
             <h1>All posts</h1>
           </MainHeader>
-          {data.allMarkdownRemark.group.map(grp => {
+          {data.allMarkdownRemark.group.map((grp, i) => {
             return (
-              <AllPosts>
+              <AllPosts key={(i + 1) * 3}>
                 <MonthYear>{grp.fieldValue}</MonthYear>
 
-                {grp.edges.map(({ node }) => (
-                  <IndividualPostWrapper key={node.id}>
+                {grp.edges.map(({ node, i }) => (
+                  <IndividualPostWrapper key={node.frontmatter.slug}>
                     <Link
                       to={TO_POST({ slug: node.frontmatter.slug })}
                       css={css`
@@ -111,7 +113,7 @@ export default function About({ data }) {
                       >
                         {node.frontmatter.tags.map((tag, i) => [
                           <button
-                            key={`tag-${i}`}
+                            key={`${tag}-${i}`}
                             css={css`
                               font-size: 1rem;
                               margin-right: 0.5rem;

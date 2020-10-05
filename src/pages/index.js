@@ -45,6 +45,8 @@ margin-top:2rem;
         title={siteConfig.title}
         description={siteConfig.description}
         author={siteConfig.author}
+        keywords={siteConfig.tags}
+        articleUrl={`https://kunwar.dk`}
       />
       <BlogContainer>
         <Main>
