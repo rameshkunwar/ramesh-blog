@@ -11,7 +11,7 @@ type: post
 blogMonth: September 2020
 ---
 
-![Alt text here](../../images/blog/blog-001-img01.jpg "Image: Werner Moser/pixabay - bit.ly/3clqxme")
+![blog image](../../images/blog/blog-001-img01.jpg "Image: Werner Moser/pixabay - bit.ly/3clqxme")
 
 I would like to share the story behind this blog as my first blog. I would explain the various technologies I tried and failed and then found something and finally succeed.
 
