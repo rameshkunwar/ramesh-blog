@@ -90,3 +90,5 @@ C:\Users\rames>npm --version
 
 Now, we can easily switch between Node.js version, thanks to the author (and many contributors) of the project :-).
 If you love it, don't forget to give the project a star in the project's Github [repository](https://github.com/coreybutler/nvm-windows).
+
+> CAUTION: Remember to choose the right version of Node.js as it might throw some very cryptic error messages.
