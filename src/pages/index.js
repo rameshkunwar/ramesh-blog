@@ -17,6 +17,7 @@ export default function Home({ data }) {
     background: #fff;
     overflow: hidden;
     padding: 1rem;
+    margin-bottom:3rem;
     @media (max-width: 667px) {
       padding: 0.5rem;
     }
@@ -97,12 +98,12 @@ margin-top:2rem;
                       <button
                         key={`tag-${i}`}
                         css={css`
-                          font-size: 1.2rem;
+                          font-size: 1rem;
                           margin-right: 0.5rem;
                           background-color: rgb(0 56 147 / 0.2);
-                          height: 2rem;
-                          border-radius: 1rem;
-                          padding: 0 0.8rem;
+                          height: 1.5rem;
+                          border-radius: 0.5rem;
+                          padding: 0 0.5rem;
                           color: ${siteConfig.brandColor};
                           margin-top: 0.2rem;
                           text-decoration: none !important;

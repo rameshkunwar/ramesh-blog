@@ -9,7 +9,7 @@ fairyGateTheme.overrideStyles = options => ({
   p: {
     letterSpacing: 0.2,
     color: "rgb(5, 6, 7)",
-    fontSize: "1.5rem",
+    fontSize: "1.3rem",
   },
 })
 const typography = new Typography(fairyGateTheme)
