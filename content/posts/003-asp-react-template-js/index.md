@@ -81,13 +81,19 @@ We need webpack config files for bundling related operations. We will create 3 f
 
 1. `npm install --save-dev webpack-merge`
 2. Create 3 webpack config files, i.e., webpack.common.js, webpack.prod.js, webpack.dev.js inside _wwwroot_ .
-3. Let's tell package.json about webpack config files by adding following:
+3. Let's tell package.json about webpack config files by adding following, also add babel's present for react and babel itself:
 
 ```
   "scripts": {
     "start": "webpack --config webpack.dev.js --watch",
     "build": "webpack --config webpack.prod.js",
-    }
+    },
+      "babel": {
+        "presets": [
+            "@babel/preset-env",
+            "@babel/preset-react"
+         ]
+    },
 ```
 
 4. Let's install some useful packages for webpack. Install all of them using `npm install --save-dev PACKAGE-NAME-WRITTEN-BELOW`
@@ -105,7 +111,7 @@ We need webpack config files for bundling related operations. We will create 3 f
 
 ## webpack.common.js
 
-copy and paste following in the file _webpack.common.js_
+copy and paste the content of following three files in their respective file.
 
 ```
 const path = require('path');
@@ -153,10 +159,281 @@ module.exports = {
             },
         ]
     },
-    watch:true,
+};
+```
+
+### webpack.dev.js
+
+```
+const path = require('path');
+const { merge } = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+    mode: 'development',
+    devtool: 'eval-source-map',
+    devServer: {
+        contentBase: './dist',
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+        }),
+    ],
+    watch: true,
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+});
+```
+
+### webpack.prod.js
+
+```
+const path = require('path');
+const { merge } = require('webpack-merge');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const common = require('./webpack.common.js');
+
+module.exports = merge(common, {
+    mode: 'production',
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css',
+            chunkFilename: '[id].css',
+        }),
+    ],
+    output: {
+        filename: '[name].[contenthash].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+});
+```
+
+> ### Why output on both prod and dev file, and why **contenthash** on prod file name?
+>
+> Web-browsers tend to cache scripts and styles. Having _contenthash_ allows hashed filename on build (if changes has been made). This forces browser to discard cached content and load from the server.
+
+Now, our settings for the webpack is almost done (bundle splitting comes later). We need to prepare our \_Layout.cshtml file ready to be injected with the js and css file links by webpack on build time.
+
+### Layout template file under Views -> Shared
+
+1. Create a _\_Template.cshtml_ file under Views -> Shared.
+2. Copy all contents of _\_Layout.cshtml_ to the _\_Template.cshtml_
+
+If you look at the _webpack.common.js_, we have already told webpack file; where to looks for template and the destination file (\_Layout.cshtml) to be injected.
+
+```
+ new HtmlWebpackPlugin({
+    title: 'Production',
+    filename: '../../Views/Shared/_Layout.cshtml',
+    template: '../Views/Shared/_Template.cshtml',
+    inject: false
+}),
+```
+
+## \_Template.cshtml
+
+This file will be similar to the _\_Layout.cshtml_. The only difference will be code to inject script and styles.
+
+#### Copy & paste following code on `<head></head>` section:
+
+```
+ <% for (var style in htmlWebpackPlugin.files.css) { %>
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.files.css[style] %>" />
+<% } %>
+```
+
+#### Copy & paste following code just before the `</body>` section (end of the body):
+
+```
+ <% for (var chunk in htmlWebpackPlugin.files.js) { %>
+    <script src="<%= htmlWebpackPlugin.files.js[chunk] %>"></script>
+<% } %>
+```
+
+> CAUTION: Remember to make any changes on \_Template.cshtml as \_Layout.cshtml file, now, onwards will be generated dynamically!
+
+## Add React JS
+
+Go the the [Github](https://github.com/rameshkunwar/dotNetFramework4.x.x-ReactJS-template.git) repo of this project. Copy _src_ folder and paste inside _wwwroot_ folder of the project.
+
+### Install React and ReactDOM
+
+`npm i react react-dom`
+
+Now, we have install every dependencies to run our React project.
+
+### Compile the scripts
+
+Go the terminal/cmd and type (must be at the root of the project, in our case _wwwroot_ )
+`npm run start`
+
+It creates the development bundle of scripts and styles and inject them in to the _\_Layout.cshtml_ via _\_Template.cshtml_. You can confirm it by looking into the _/dist_ folder. The project structure looks like below:
+![project structure image](../../images/blog/blog-003-screen-shot-project-structure-img03.jpg " ")
+
+If Script and Style links are injected in the _\_Layout.cshtml_, then the project is ready to run. Remember to add folders/files with React demo app (the demo app is copied from Create React App).
+
+> Remember, we have not deleted files that comes with default ASP.NET MVC template. We gonna do that later on. It's not necessary to delete them if you need, however, they would increase the bundle size and we gonna remove _bundle.config_ too as we use Webpack.
+
+Press F5 or click Start to run the project. This is necessary, as we are using IIS Express (shipped with Visual Studio) to act as our dev server.
+
+If if runs without an error, we should be able to see a page similar to the below:
+![react app running image](../../images/blog/blog-003-react-app-running-img02.jpg " ")
+
+React app is running along with the ASP.NET MVC template's Bootstrap navbar! Isn't it a beautiful view!
+
+> Now, we can go ahead and remove all _nuget_ packages that is not needed.
+
+1. Right-click the project (NOT the solution) and select _Manage Nuget Packages_
+2. Uninstall packages deemed not need for the project, probably, it would be _jQuery_ and _bootstrap_. If you need these 2 packages, install using npm.
+3. Remove _bundle.config_ from /App*Start folder and entries of bundle from *\_Template.cshtml\_.
+
+## Splitting bundle file
+
+The template is ready. However, there is one more important thing (probably there are many ;-) ). When the project grows so the build size. Big bundle size could give problems such as,
+
+- Single large chunk size (think of a bundle with all source code along with dependencies).
+- If a small change is made, Webpack detects this and generates a new bundle file with a new hash key. Now, the browser has to reload the whole bundle!
+- Can't pre-or-lazy load due to single bundle file.
+
+### Let's alter the _webpack.common.js_ and _\_Template.cshtml_ for bundle splitting.
+
+After running `npm run build or start`, we should be able to similar bundle files as shown below.
+
+```
+
+                        Asset             Size     Chunks                         Chunk Names
+../../Views/Shared/_Layout.cshtml        1.49 KiB          [emitted]
+app.067438a29d63ee7bf581.css             768 bytes     0  [emitted] [immutable]  app
+app.542ea302f9487596bd9f.bundle.js       130 KiB       0  [emitted] [immutable]  app
+runtime.e9d0f715e4067b817a45.bundle.js   1.46 KiB      1  [emitted] [immutable]  runtime
+app.542ea302f9487596bd9f.bundle.js.LICENSE.txt 790 bytes [emitted]
+```
+
+> NOTE: I installed moment and react-router to increase the build size so that more chunks will be created, just for demonstration purpose, without success. However, I have tried this in my project and this works! I can assure you about that.
+
+### Updated _webpack.common.js_
+
+```
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+//Use this if your domain name has path. Example, www.example.com/myapp
+//This will inject correct path of scripts in _Layout.cshtml via _Layout_Template.cshtml otherwise it will omit / research
+
+//const ASSET_PATH = process.env.ASSET_PATH || '/myapp/wwwroot/dist/';
+
+module.exports = {
+    entry: {
+       app: './src/index.js',
+    },
+    output: {
+       // publicPath: ASSET_PATH,
+        filename: '[name].[contenthash].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    plugins: [
+        // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Production',
+            filename: '../../Views/Shared/_Layout.cshtml',
+            template: '../Views/Shared/_Template.cshtml',
+            inject: false
+        }),
+    ],
+    module: {
+        rules: [
+            {
+                use: {
+                    loader: "babel-loader"
+                },
+                test: /\.js$|jsx/,
+                resolve: {
+                    extensions: [".js", ".jsx"]
+                },
+                exclude: /node_modules/
+            },
+            {
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                test: /\.css$/
+            },
+            {
+                test: /\.svg$/,
+                exclude: path.resolve(__dirname, 'node_modules', 'font-awesome'),
+                use: ['babel-loader', 'react-svg-loader'],
+            },
+        ]
+    },
+    optimization: {
+        minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+        moduleIds: "hashed",
+        runtimeChunk: "single",
+        splitChunks: {
+            chunks: "all",
+            maxInitialRequests: Infinity,
+            minSize: 300000,
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name(module) {
+                        // // get the name. E.g. node_modules/packageName/not/this/part.js
+                        // //or node_modules/packageName
+                        const packageName = module.context.match(
+                            /[\\/]node_modules[\\/](.*?)([\\/]|$)/
+                        )[1];
+                        //  //npm package names are URL-safe, but some servers don't like @ symbols
+                        return `react-dot-net-app.${packageName.replace("@", "")}`;
+                    }
+                }
+            }
+        }
+    }
 };
 ```
+
+### Updated \_Template.cshtml
+
+```
+ <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+    <script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% } %>
+```
+
+### Bundle injection problem with address having path, example, https://example.com/myapp
+
+We need to specify _publicpath_ in the webpack.common.js
+
+```
+....... code removed for brevity
+
+const ASSET_PATH = process.env.ASSET_PATH || '/myapp/wwwroot/dist/';
+
+module.exports = {
+    entry: {
+       app: './src/index.js',
+    },
+    output: {
+        publicPath: ASSET_PATH,
+        filename: '[name].[contenthash].bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+
+.......... code removed for brevity
+
+```
+
+#### That's all for JavaScript template. I will be soon writing another template with _TypeScript_. Tweet me or write an email if any questions, suggestions or better ideas. Thanks for reading.
