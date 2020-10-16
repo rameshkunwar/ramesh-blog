@@ -15,6 +15,10 @@ const IndividualPostWrapper = styled.div`
   background: #fff;
   overflow: hidden;
   padding: 1rem;
+  margin-bottom: 1rem;
+  &:last-child{
+    margin-bottom:0;
+  }
   @media (max-width: 667px) {
     padding: 0.5rem;
   }
