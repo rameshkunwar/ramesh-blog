@@ -27,6 +27,17 @@ a:hover {
   color: #c60c30 !important;
 }
 
+h1 {
+  font-family: fell, Georgia, Cambria, "Times New Roman", Times, serif !important;
+}
+h2 {
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+}
+p {
+  font-family: charter, Georgia, Cambria, "Times New Roman", Times, serif !important;
+  color: rgba(41, 41, 41, 1) !important;
+}
+
 @media (max-width: 500px) {
   p {
     font-size: 1.3rem;

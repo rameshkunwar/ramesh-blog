@@ -144,15 +144,14 @@ export default function Layout({ children }) {
         }}
         expires={150}
       >
-        This website stores cookies related to Google Analytics on your
-        computer. These cookies are used to measure how users interact with
+        I respect your privacy. This website stores cookies. These cookies are used to measure how users interact with
         website content.{" "}
         <a href="https://support.google.com/analytics/answer/6004245">
           Google Analytics data privacy & security
         </a>
         <br />
         We use this information in order to improve your browsing experience and
-        for analytics and metrics about our visitors on this website.{" "}
+        for analytics and metrics about the visitors on this website.{" "}
         <strong> This is a non-profit blog site.</strong>
         <br />
         <br />
