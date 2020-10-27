@@ -77,7 +77,7 @@ This template is created using (and assumed they are already installed):
 
 We need webpack config files for bundling related operations. We will create 3 files, one common (containing basic settings) and two for development and production respectively. It is also possible to create 4th for staging with little effort.
 
-> > > "While we will separate the production and development specific bits out, note that we'll still maintain a "common" configuration to keep things DRY. In order to merge these configurations together, we'll use a utility called webpack-merge. With the "common" configuration in place, we won't have to duplicate code within the environment-specific configuration" - [webpack](https://webpack.js.org/guides/production/)
+> "While we will separate the production and development specific bits out, note that we'll still maintain a "common" configuration to keep things DRY. In order to merge these configurations together, we'll use a utility called webpack-merge. With the "common" configuration in place, we won't have to duplicate code within the environment-specific configuration" - [webpack](https://webpack.js.org/guides/production/)
 
 1. `npm install --save-dev webpack-merge`
 2. Create 3 webpack config files, i.e., webpack.common.js, webpack.prod.js, webpack.dev.js inside _wwwroot_ .
