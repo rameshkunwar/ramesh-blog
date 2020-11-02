@@ -144,20 +144,16 @@ export default function Layout({ children }) {
         }}
         expires={150}
       >
-        I respect your privacy. This website stores cookies. These cookies are used to measure how users interact with
-        website content.{" "}
-        <a href="https://support.google.com/analytics/answer/6004245">
-          Google Analytics data privacy & security
-        </a>
+        I respect your privacy. This website stores cookie. These cookies are used to measure how users interact with
+        website content.{" "}        
         <br />
-        We use this information in order to improve your browsing experience and
-        for analytics and metrics about the visitors on this website.{" "}
-        <strong> This is a non-profit blog site.</strong>
+       This information is used to improve your browsing experience and
+        for analytics and metrics about the visitors on this website.{" "}      
         <br />
         <br />
         If you decline, your information won’t be tracked when you visit this
-        website. A single cookie will be used in your browser to remember your
-        preference not to be tracked.
+        website. A cookie will be used in your browser to remember your
+        preference.
       </CookieConsent>
     </React.Fragment>
   )

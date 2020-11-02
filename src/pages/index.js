@@ -65,15 +65,15 @@ margin-top:2rem;
                   <Img
                     fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
                   />
-                  <h3
+                  <h2
                     css={css`
                       margin-bottom: ${rhythm(1 / 4)};
-                      margin-top: ${rhythm(1 / 4)};
+                      margin-top: ${rhythm(1)};
                     `}
                   >
                     {" "}
                     {node.frontmatter.title}
-                  </h3>
+                  </h2>
                 </Link>
                 <DateAndReadTime>
                   {moment(node.frontmatter.modified).format("DD-MMM-YYYY")} .{" "}
