@@ -51,4 +51,4 @@ getUserId( function(error, data) {
 
 ### How Promise solves this callback-hell problem?
 
-![blog image](../../images/blog/blog-005-js-promise-chaining-img002.jpg "Image: Mozilla, https://mzl.la/2TQb9FX")
+![blog image](../../images/blog/blog-005-js-promise-chaining-img002.jpg " ")
