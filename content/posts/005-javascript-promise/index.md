@@ -145,8 +145,11 @@ const handleSomething = () => {
 
 [Codesandbox link](https://bit.ly/32pzQ0M) of the above code.
 
-MDN (Mozilla Developer Network) is always good place to looks for JavaScript documentations. [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) documentation and all methods can be found following the link.
-
 > jQuery do support [Promise](https://api.jquery.com/promise/). Promise is not just a Vanilla JS thing. It is possible to chain jQuery Ajax call. It's handy, especially, if second Ajax call is dependent of the first or should run after first is completed. Example, `$.when(firstAjaxCallFunction).then(doSecond).then(doThird)`
+
+### Good links to learn promise
+
+1. MDN (Mozilla Developer Network) is always good place to looks for JavaScript documentations. [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) documentation and all methods can be found following the link.
+2. [javascript.info](https://javascript.info/promise-basics) has detailed explanation.
 
 [^1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all

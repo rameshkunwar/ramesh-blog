@@ -38,6 +38,10 @@ p {
   color: rgba(41, 41, 41, 1) !important;
 }
 
+.footnotes > ol > li > p {
+  font-size: small;
+}
+
 @media (max-width: 500px) {
   p {
     font-size: 1.3rem;
