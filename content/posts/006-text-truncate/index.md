@@ -1,7 +1,7 @@
 ---
 title: "Truncating multi line text with both css and javascript"
-created: "2020-11-12T20:14:40.533"
-modified: "2020-11-12T20:14:40.533"
+created: "2020-11-16T22:14:40.533"
+modified: "2020-11-16T22:14:40.533"
 description: "Truncating multi-line text with CSS, using -webkit-line-clamp, assessing its drawback and addressing the drawback with a solution using JavaScript"
 featuredImage: "../../images/blog/blog-006-truncate-text-img002.jpg"
 imageCaption: ""
@@ -13,11 +13,11 @@ blogMonth: November 2020
 
 ![post image](../../images/blog/blog-006-truncate-text-img001.jpg " ")
 
-Truncating multiple line text using pure CSS can be done, however, it's has some caveats. There a JavaScript solution might be ideal in some cases.
+Truncating multiple line text using pure CSS can be done, however, it has some caveats. There a JavaScript solution might be ideal in some cases.
 
-### Truncating single line text followed by ellipsis
+### Truncating single line text followed by an ellipsis
 
-The is very common and widely used scenario and it has a standard CSS implementation.
+The is a very common and widely used scenario and it has a standard CSS implementation.
 
 ```
 .truncate {
@@ -30,7 +30,7 @@ The is very common and widely used scenario and it has a standard CSS implementa
 
 The above code results in `A quick brown fox jumps...`
 
-So far so good. What about if we want to limit our text to 2 lines? Well, we have few possible solutions:
+So far so good. What about if we want to limit our text to 2 lines? Well, we have a few possible solutions:
 
 - Pure CSS
 - JavaScript
@@ -46,7 +46,7 @@ display: -webkit-box; or -webkit-inline-box
 -webkit-box-orient: vertical;
 ```
 
-The above code will truncate or clip the text to two line and show truncated text with ellipsis. Despite being a **Working Draft**, the code works in all modern browsers except the Internet Explorer.
+The above code will truncate or clip the text to two-line and show truncated text with an ellipsis. Despite being a **Working Draft**, the code works in all modern browsers except the Internet Explorer.
 
 However, it might not be a perfect solution in certain situations. The biggest problem is _-webkit-box_ or _-webkit-inline-box_. Despite having inline, it always behaves as a block.
 
@@ -85,24 +85,61 @@ Let's examine a code shown below. I wanted to show all elements as inline, the l
 </div>
 ```
 
-> Complete code for this blog can be found here.
-
-It does truncate text, but broke my design, which I did not want.
+It does truncate text but broke my design, which I did not want.
 ![screenshot image](../../images/blog/blog-006-truncate-text-img004.jpg " ")
 
-The first item (in the screen shot shown above) is what I wanted. The third line text (New, R) is also inline but aligned right. I would have loved to get the same result by using -webkit-line-clamp (as it's very simple and clean), however, it did not meet my purpose. I had to look elsewhere for the rescue.
+The first item (in the screenshot shown above) is what I wanted. The third line text (New, R) is also inline but aligned right. I would have loved to get the same result by using -webkit-line-clamp (as it's very simple and clean), however, it did not meet my purpose. I had to look elsewhere for the rescue.
 
-### JavaScript (once again, the savior!)
+### JavaScript (once again, the saviour!)
 
 JavaScript implementation is tricky with some pre-defined parameters. Such as:
 
 - Amount of letters or words to show and truncate rest:
-- Use _height_ of the div as the measurement index!
+- Use the _height_ of the div as the measurement index!
 
 The first approach is shown [here](https://gomakethings.com/how-to-truncate-text-with-vanilla-javascript/). In my opinion, it's very difficult to know in advance how many words or characters will fill-up the given area. Therefore, I have dropped this idea.
 
 ### Using height of the _div_
 
-Yes! A div with content has a height. Most of the time, we have consistent height among items. In my case, I had to show many items using the same layout. That made by task a lot easier.
+Yes! A div with content has a height. Most of the time, we have a consistent height among items. In my case, I had to show many items using the same layout. That made my task a lot easier.
+
+> _Complete code for this blog can be found here in [CodeSandbox](https://codesandbox.io/s/texttruncate-czmu8)._
 
 I found that the height of the div for which text has to be truncated was '24px', when shown single line. For the 2 lines text, it was 48px. Now, if the height of div is greater than 48px, that means, the text of this div has to be truncated( **I wanted to show only 2 lines of text**).
+
+> If we are following a uniform design, then, we are going to have a uniform height. Or else, the JavaScript code has to be adjusted.
+
+### How does it work?
+
+The idea is very basic.
+
+1. Read the DOM
+2. Get the height of the div
+3. Check if it exceeds a given threshold
+4. If it exceeds, send the text to a loop
+5. Remove each character at a time from the end
+6. Update the DOM with the text and check if the _div_ width + "..." (if we want to show ellipsis) is less than given threshold
+7. Repeat until the text is less than the threshold
+
+Excerpt of the code from [CodeSandbox](https://codesandbox.io/s/texttruncate-czmu8)
+
+```
+function truncateTextToFit(nodeObj, textAndLength) {
+  if (isEmptyObject(textAndLength)) {
+    return false;
+  }
+  for (let index = textAndLength.length; index > 1; index--) {
+    let slicedString = textAndLength.text.slice(0, index);
+    if (isTextFitsOnGivenLine(slicedString, nodeObj)) {
+      break;
+    }
+  }
+}
+
+function isTextFitsOnGivenLine(slicedString, nodeObj) {
+  nodeObj.textContent = slicedString + elementToAdd;
+  return nodeObj.offsetHeight <= BASE_OFFSET_HEIGHT;
+}
+```
+
+DOM manipulation is always expensive, but sometimes the DOM manipulation is a necessary evil.
