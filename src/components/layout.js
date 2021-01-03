@@ -10,9 +10,12 @@ import CookieConsent from "react-cookie-consent"
 
 deckDeckGoHighlightElement()
 
-const Container = styled.div`
-  margin: 0 auto;
-  max-width: 800px;
+const BlogPostMain = styled.div`
+display:flex;
+`
+const BlogPosts = styled.div` 
+  flex: 1 0 800px;
+  order:2;
   padding: ${rhythm(2)};
   padding-top: 0;
   font-size: 1.5rem;
@@ -27,6 +30,20 @@ const Container = styled.div`
     font-size: 22px !important;
     line-height: 1.54 !important;
   }
+`
+const AsideLeft = styled.aside`
+flex: 1 1 320px;
+order:1;
+@media (max-width: 768px) {
+  display:none !important;
+}
+`
+const AsideRight = styled.aside`
+flex: 1 0 320px;
+order:3;
+@media (max-width: 768px) {
+  display:none !important;
+}
 `
 const SocialMedia = styled.div`
   position: fixed;
@@ -109,7 +126,16 @@ export default function Layout({ children }) {
         </SocialMediaLink>
       </SocialMedia>
       <Navbar />
-      <Container>{children}</Container>
+      {/* <BlogPosts>{children}</BlogPosts> */}
+      <BlogPostMain>
+      <BlogPosts>{children}</BlogPosts>
+      <AsideRight>
+       
+      </AsideRight>
+      <AsideLeft>
+        </AsideLeft>
+    
+      </BlogPostMain>
       <Footer />
       <CookieConsent
         location="bottom"

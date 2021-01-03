@@ -23,13 +23,53 @@ const IndividualPostWrapper = styled.div`
     padding: 0.5rem;
   }
 `
-const Container = styled.div`
- display:flex;
- min-height:74vh;
- margin-top:2rem;
- font-family: 'merriweather',serif;
+const AllPostsTagsContainer = styled.div`
+display:flex;  
+`
+const AllBlogPosts = styled.div` 
+  flex: 1 0 800px;
+  order:2;
+  padding: ${rhythm(2)};
+  padding-top: 0;
+  margin-top:2rem;
+  font-family: 'merriweather',serif; 
+  font-size: 1.5rem;
+  letter-spacing: 0.2px;
+  color: rgb(5, 6, 7);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+    padding-top: 0.5rem;
+    font-size: 22px !important;
+    line-height: 1.54 !important;
   }
 `
+const AsideLeft = styled.aside`
+flex: 1 1 320px;
+order:1;
+@media (max-width: 768px) {
+  display:none !important;
+}
+`
+const AsideRight = styled.aside`
+flex: 1 0 320px;
+order:3;
+margin-top:2rem;
+@media (max-width: 768px) {
+  display:none !important;
+}
+`
+// const Container = styled.div`
+//  display:flex;
+//  min-height:74vh;
+//  margin-top:2rem;
+//  font-family: 'merriweather',serif;  
+//  order:2;
+//  flex: 0 0 800px;
+
+// `
 const Main = styled.div`
   flex: 0 0 800px;
   max-width: 100%;
@@ -46,7 +86,7 @@ const MonthYear = styled.h2`
   margin-top: 2rem;
 `
 
-export default function About({ data }) {
+export default function showAllPosts({ data }) {
   return (
     <Layout>
       <SEO
@@ -56,13 +96,14 @@ export default function About({ data }) {
         keywords={siteConfig.tags}
         articleUrl={`https://kunwar.dk`}
       />
-      <Container>
+      <AllPostsTagsContainer>
+      <AllBlogPosts>
         <Main>
           <MainHeader>
             {" "}
             <h1>All posts</h1>
           </MainHeader>
-          {data.allMarkdownRemark.group.map((grp, i) => {
+          {data.post.group.map((grp, i) => {
             return (
               <AllPosts key={(i + 1) * 3}>
                 <MonthYear>{grp.fieldValue}</MonthYear>
@@ -149,14 +190,25 @@ export default function About({ data }) {
             )
           })}
         </Main>
-      </Container>
-    </Layout>
+      </AllBlogPosts>
+      <AsideRight>
+        <div className="hell" style={{marginTop:'1.5rem'}}>
+          <div className="inner-tag-container">
+            <h3>tags</h3>
+          </div>
+        </div>
+      </AsideRight>
+      <AsideLeft>
+        </AsideLeft>
+    
+      </AllPostsTagsContainer>
+      </Layout>
   )
 }
 
 export const query = graphql`
-  {
-    allMarkdownRemark(
+  query {
+    post: allMarkdownRemark(
       sort: { fields: [frontmatter___modified], order: DESC }
       filter: { frontmatter: { type: { eq: "post" } } }
     ) {
@@ -180,5 +232,19 @@ export const query = graphql`
         }
       }
     }
+    tags: allMarkdownRemark(sort: {fields: [frontmatter___modified], order: DESC}, filter: {frontmatter: {type: {eq: "post"}}}) {
+      group(field: frontmatter___blogMonth) {
+        edges {
+          node {
+            frontmatter {
+              tags
+              slug
+            }
+          }
+        }
+      }
+    }
+  
   }
+  
 `
