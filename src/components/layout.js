@@ -13,8 +13,7 @@ deckDeckGoHighlightElement()
 const BlogPostMain = styled.div`
 display:flex;
 `
-const BlogPosts = styled.div` 
-  flex: 1 0 800px;
+const BlogPosts = styled.div`  
   order:2;
   padding: ${rhythm(2)};
   padding-top: 0;

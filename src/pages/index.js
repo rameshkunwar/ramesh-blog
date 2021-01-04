@@ -23,10 +23,11 @@ export default function Home({ data }) {
     }
   `
   const BlogContainer = styled.div`
- display:flex;
- min-height:74vh;
-margin-top:2rem;
- font-family: 'merriweather',serif;
+  display:flex;
+  min-height:74vh;
+  margin-top:2rem;
+  font-family: 'merriweather',serif;
+  justify-content:center;
   }
 `
   const Main = styled.div`

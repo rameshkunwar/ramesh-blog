@@ -70,6 +70,23 @@ margin-top:2rem;
 //  flex: 0 0 800px;
 
 // `
+const TagContainer = styled.div`
+display:flex;
+flex-wrap:wrap;
+`
+const TagLinks = styled.a`
+font-size: 1.2rem;
+margin-right: .5rem;
+background-color: #e7eef3;
+height: 2rem;
+border-radius: 1rem;
+padding: 0 .8rem;
+color: #2c445a;
+margin-top:.5rem;
+`
+const TagNames = styled.span`
+vertical-align:middle;
+`
 const Main = styled.div`
   flex: 0 0 800px;
   max-width: 100%;
@@ -195,6 +212,17 @@ export default function showAllPosts({ data }) {
         <div className="hell" style={{marginTop:'1.5rem'}}>
           <div className="inner-tag-container">
             <h3>tags</h3>
+           <TagContainer>
+           {
+              data.tags.group.map((tag, index) => {
+                return (
+                  <TagLinks key={`xyz-${index}`} href={`/tag/${tag.tag}/`}>
+                    <TagNames>{tag.tag}</TagNames>
+                  </TagLinks>                 
+                )
+              })
+            }
+           </TagContainer>
           </div>
         </div>
       </AsideRight>
@@ -232,16 +260,9 @@ export const query = graphql`
         }
       }
     }
-    tags: allMarkdownRemark(sort: {fields: [frontmatter___modified], order: DESC}, filter: {frontmatter: {type: {eq: "post"}}}) {
-      group(field: frontmatter___blogMonth) {
-        edges {
-          node {
-            frontmatter {
-              tags
-              slug
-            }
-          }
-        }
+    tags:  allMarkdownRemark {
+      group(field: frontmatter___tags) {
+        tag: fieldValue
       }
     }
   
