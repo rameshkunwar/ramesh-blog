@@ -70,6 +70,9 @@ margin-top:2rem;
 //  flex: 0 0 800px;
 
 // `
+const TagBox = styled.div`
+margin-top:2.5rem;
+`
 const TagContainer = styled.div`
 display:flex;
 flex-wrap:wrap;
@@ -77,11 +80,11 @@ flex-wrap:wrap;
 const TagLinks = styled.a`
 font-size: 1.2rem;
 margin-right: .5rem;
-background-color: #e7eef3;
+background-color:rgb(0 56 147 / 0.2);
 height: 2rem;
 border-radius: 1rem;
 padding: 0 .8rem;
-color: #2c445a;
+color: #003893;
 margin-top:.5rem;
 `
 const TagNames = styled.span`
@@ -211,7 +214,7 @@ export default function showAllPosts({ data }) {
       <AsideRight>
         <div className="hell" style={{marginTop:'1.5rem'}}>
           <div className="inner-tag-container">
-            <h3>tags</h3>
+            <h2>tags</h2>
            <TagContainer>
            {
               data.tags.group.map((tag, index) => {
