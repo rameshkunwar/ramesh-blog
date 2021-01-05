@@ -212,7 +212,7 @@ export default function showAllPosts({ data }) {
         </Main>
       </AllBlogPosts>
       <AsideRight>
-        <div className="hell" style={{marginTop:'1.5rem'}}>
+        <TagBox>
           <div className="inner-tag-container">
             <h2>tags</h2>
            <TagContainer>
@@ -227,7 +227,7 @@ export default function showAllPosts({ data }) {
             }
            </TagContainer>
           </div>
-        </div>
+        </TagBox>
       </AsideRight>
       <AsideLeft>
         </AsideLeft>

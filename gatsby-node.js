@@ -22,6 +22,7 @@ This function allows you to create additional fields on nodes created by other p
  (including your gatsby-node.js) must use this function to create additional fields.
  */
 const path = require(`path`)
+const _ = require("lodash")
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
@@ -48,7 +49,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allMarkdownRemark {
+     allMarkdownRemark {
         edges {
           node {
             fields {
@@ -60,10 +61,15 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      tagGroups:allMarkdownRemark(limit: 2000) {
+        group(field: frontmatter___tags) {
+          fieldValue
+        }
+      }
+     
     }
   `)
   //console.log(JSON.stringify(result, null, 4))
-
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
@@ -87,15 +93,16 @@ exports.createPages = async ({ graphql, actions }) => {
   //   }
   // `)
 
-  //   const tags = tagResult.data.allMarkdownRemark.group
+     const tags = result.data.tagGroups.group
+     console.log(tags)
 
-  //   tags.forEach(tag => {
-  //     createPage({
-  //       path: `/content/posts/tags/${_.kebabCase(tag.fieldValue)}/`,
-  //       component: path.resolve(`./src/templates/blog-tags.js`),
-  //       context: {
-  //         tag: tag.fieldValue,
-  //       },
-  //     })
-  //   })
+    tags.forEach(tag => {
+      createPage({
+        path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+        component: path.resolve(`./src/templates/tags.js`),
+        context: {
+          tag: tag.fieldValue,
+        },
+      })
+    })
 }
