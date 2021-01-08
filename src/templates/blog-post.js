@@ -35,7 +35,7 @@ const ShareOnSocialMediaLink = styled.a`
   background-color: rgba(0, 56, 147, 0.7);
   color: ${siteConfig.brandColor};
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 15px;
   padding: 0.25rem;
   text-shadow: none;
   background-image: none; 

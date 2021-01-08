@@ -6,7 +6,7 @@ description: "How I ended up creating my blog using Gatsby JS - A story about my
 featuredImage: "../../images/blog/blog-001-img01.jpg"
 imageCaption: "free-pixabay"
 slug: 001-first-blog-post
-tags: ["inspiration", "blog", "Gatsby"]
+tags: ["inspiration", "blog", "gatsby"]
 type: post
 blogMonth: September 2020
 ---

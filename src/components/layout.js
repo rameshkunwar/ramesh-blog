@@ -14,8 +14,9 @@ const BlogPostMain = styled.div`
 display:flex;
 `
 const BlogPosts = styled.div`
-  flex: 1 0 800px;  
-  order:2;
+   flex: 0 0 800px;  
+   order:2;
+   max-width:100%;
   padding: ${rhythm(2)};
   padding-top: 0;
   font-size: 1.5rem;
@@ -82,7 +83,7 @@ const SocialMediaImage = styled.img`
   color: ${siteConfig.brandColor};
   margin-bottom: 0.5rem;
 `
-export default function Layout({ children }) {
+export default function Layout({ children, leftSideBar, rightSideBar }) {
   return (
     <React.Fragment>
       <SocialMedia>
@@ -129,11 +130,8 @@ export default function Layout({ children }) {
       {/* <BlogPosts>{children}</BlogPosts> */}
       <BlogPostMain>
       <BlogPosts>{children}</BlogPosts>
-      <AsideRight>
-       
-      </AsideRight>
-      <AsideLeft>
-        </AsideLeft>
+      <AsideRight> {rightSideBar} </AsideRight>
+      <AsideLeft>{leftSideBar}</AsideLeft>
     
       </BlogPostMain>
       <Footer />

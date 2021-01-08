@@ -24,11 +24,26 @@ export default function Home({ data }) {
   `
   const BlogContainer = styled.div`
   display:flex;
+  order:2;
   min-height:74vh;
   margin-top:2rem;
   font-family: 'merriweather',serif;
   justify-content:center;
   }
+`
+const AsideLeft = styled.aside`
+flex: 1 1 320px;
+order:1;
+@media (max-width: 768px) {
+  display:none !important;
+}
+`
+const AsideRight = styled.aside`
+flex: 1 0 320px;
+order:3;
+@media (max-width: 768px) {
+  display:none !important;
+}
 `
   const Main = styled.div`
     flex: 0 0 800px;
@@ -138,6 +153,7 @@ export default function Home({ data }) {
           </React.Fragment>
         </Main>
       </BlogContainer>
+      
     </Layout>
   )
 }

@@ -8,6 +8,7 @@ import moment from "moment"
 import siteConfig from "../../site-config"
 import SEO from "../components/seo"
 import { TO_POST } from "../routes/path"
+import RightSideBar from "../utils/allPostsRightTagBar"
 
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
@@ -108,7 +109,7 @@ const MonthYear = styled.h2`
 
 export default function showAllPosts({ data }) {
   return (
-    <Layout>
+    <Layout rightSideBar={<RightSideBar />}>
       <SEO
         title={`All posts`}
         description={`List of all posts`}
@@ -211,7 +212,7 @@ export default function showAllPosts({ data }) {
           })}
         </Main>
       </AllBlogPosts>
-      <AsideRight>
+      {/* <AsideRight>
         <TagBox>
           <div className="inner-tag-container">
             <h2>tags</h2>
@@ -219,7 +220,7 @@ export default function showAllPosts({ data }) {
            {
               data.tags.group.map((tag, index) => {
                 return (
-                  <TagLinks key={`xyz-${index}`} href={`/tag/${tag.tag}/`}>
+                  <TagLinks key={`xyz-${index}`} href={`/tags/${tag.tag}/`}>
                     <TagNames>{tag.tag}</TagNames>
                   </TagLinks>                 
                 )
@@ -229,13 +230,36 @@ export default function showAllPosts({ data }) {
           </div>
         </TagBox>
       </AsideRight>
-      <AsideLeft>
-        </AsideLeft>
+      <AsideLeft> </AsideLeft> */}
     
       </AllPostsTagsContainer>
       </Layout>
   )
 }
+
+// export  function RightSideBar({data}){
+// return(
+//   <TagBox>
+//           <div className="inner-tag-container">
+//             <h2>tags</h2>
+//            <TagContainer>
+//            {
+//              <TagLinks>
+//                <TagNames>Test</TagNames>
+//              </TagLinks>
+//               // data.tags.group.map((tag, index) => {
+//               //   return (
+//               //     <TagLinks key={`xyz-${index}`} href={`/tags/${tag.tag}/`}>
+//               //       <TagNames>{tag.tag}</TagNames>
+//               //     </TagLinks>                 
+//               //   )
+//               // })
+//             }
+//            </TagContainer>
+//           </div>
+//         </TagBox>
+// )
+// }
 
 export const query = graphql`
   query {
