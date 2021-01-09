@@ -50,6 +50,10 @@ p {
 .gatsby-resp-image-wrapper {
   max-width: unset !important;
 }
+.tag-link {
+  text-decoration: none;
+}
+
 @media (max-width: 500px) {
   p {
     font-size: 1.3rem;

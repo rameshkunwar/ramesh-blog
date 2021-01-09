@@ -9,6 +9,8 @@ import siteConfig from "../../site-config"
 import SEO from "../components/seo"
 import { TO_POST } from "../routes/path"
 import RightSideBar from "../utils/allPostsRightTagBar"
+import kebabCase from "lodash/kebabCase"
+
 
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
@@ -200,7 +202,8 @@ export default function showAllPosts({ data }) {
                               }
                             `}
                           >
-                            <span>{tag}</span>
+                            {/* <span>{tag}</span> */}
+                            <a className="tag-link" href={`/tags/${kebabCase(tag.replace('#', '-sharp'))}`} >{tag}</a>
                           </button>,
                         ])}
                       </div>

@@ -9,6 +9,8 @@ import moment from "moment"
 import siteConfig from "../../site-config"
 import SEO from "../components/seo"
 import { TO_POST } from "../routes/path"
+import kebabCase from "lodash/kebabCase"
+
 
 export default function Home({ data }) {
   const IndividualPostWrapper = styled.div`
@@ -134,7 +136,8 @@ order:3;
                           }
                         `}
                       >
-                        <span>{tag}</span>
+                        {/* <span>{kebabCase(tag)}</span> */}
+                        <a className="tag-link" href={`/tags/${kebabCase(tag.replace('c#', 'c-sharp'))}`} >{tag}</a>
                       </button>,
                     ])}
                   </div>

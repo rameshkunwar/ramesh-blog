@@ -1,6 +1,8 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import styled from "@emotion/styled"
+import kebabCase from "lodash/kebabCase"
+
 const TagBox = styled.div`
 margin-top:2.5rem;
 max-width:20rem;
@@ -40,7 +42,7 @@ const  RightSideBar = ({data}) => {
                 {
                  allTags.allMarkdownRemark.group.map((tag, index) => {
                     return (
-                      <TagLinks key={`xyz-${index}`} href={`/tags/${tag.tag}/`}>
+                      <TagLinks key={`xyz-${index}`} href={`/tags/${kebabCase(tag.tag.replace('c#', 'c-sharp'))}/`}>
                         <TagNames>{tag.tag}</TagNames>
                       </TagLinks>                 
                     )

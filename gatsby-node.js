@@ -94,11 +94,11 @@ exports.createPages = async ({ graphql, actions }) => {
   // `)
 
      const tags = result.data.tagGroups.group
-     console.log(tags)
+    
 
     tags.forEach(tag => {
       createPage({
-        path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+        path: `/tags/${_.kebabCase(tag.fieldValue.replace('c#', 'c-sharp'))}/`,
         component: path.resolve(`./src/templates/tags.js`),
         context: {
           tag: tag.fieldValue,
