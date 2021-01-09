@@ -33,20 +33,7 @@ export default function Home({ data }) {
   justify-content:center;
   }
 `
-const AsideLeft = styled.aside`
-flex: 1 1 320px;
-order:1;
-@media (max-width: 768px) {
-  display:none !important;
-}
-`
-const AsideRight = styled.aside`
-flex: 1 0 320px;
-order:3;
-@media (max-width: 768px) {
-  display:none !important;
-}
-`
+
   const Main = styled.div`
     flex: 0 0 800px;
     max-width: 100%;

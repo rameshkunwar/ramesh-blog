@@ -49,50 +49,7 @@ const AllBlogPosts = styled.div`
     line-height: 1.54 !important;
   }
 `
-const AsideLeft = styled.aside`
-flex: 1 1 320px;
-order:1;
-@media (max-width: 768px) {
-  display:none !important;
-}
-`
-const AsideRight = styled.aside`
-flex: 1 0 320px;
-order:3;
-margin-top:2rem;
-@media (max-width: 768px) {
-  display:none !important;
-}
-`
-// const Container = styled.div`
-//  display:flex;
-//  min-height:74vh;
-//  margin-top:2rem;
-//  font-family: 'merriweather',serif;  
-//  order:2;
-//  flex: 0 0 800px;
 
-// `
-const TagBox = styled.div`
-margin-top:2.5rem;
-`
-const TagContainer = styled.div`
-display:flex;
-flex-wrap:wrap;
-`
-const TagLinks = styled.a`
-font-size: 1.2rem;
-margin-right: .5rem;
-background-color:rgb(0 56 147 / 0.2);
-height: 2rem;
-border-radius: 1rem;
-padding: 0 .8rem;
-color: #003893;
-margin-top:.5rem;
-`
-const TagNames = styled.span`
-vertical-align:middle;
-`
 const Main = styled.div`
   flex: 0 0 800px;
   max-width: 100%;
@@ -215,54 +172,13 @@ export default function showAllPosts({ data }) {
           })}
         </Main>
       </AllBlogPosts>
-      {/* <AsideRight>
-        <TagBox>
-          <div className="inner-tag-container">
-            <h2>tags</h2>
-           <TagContainer>
-           {
-              data.tags.group.map((tag, index) => {
-                return (
-                  <TagLinks key={`xyz-${index}`} href={`/tags/${tag.tag}/`}>
-                    <TagNames>{tag.tag}</TagNames>
-                  </TagLinks>                 
-                )
-              })
-            }
-           </TagContainer>
-          </div>
-        </TagBox>
-      </AsideRight>
-      <AsideLeft> </AsideLeft> */}
+      
     
       </AllPostsTagsContainer>
       </Layout>
   )
 }
 
-// export  function RightSideBar({data}){
-// return(
-//   <TagBox>
-//           <div className="inner-tag-container">
-//             <h2>tags</h2>
-//            <TagContainer>
-//            {
-//              <TagLinks>
-//                <TagNames>Test</TagNames>
-//              </TagLinks>
-//               // data.tags.group.map((tag, index) => {
-//               //   return (
-//               //     <TagLinks key={`xyz-${index}`} href={`/tags/${tag.tag}/`}>
-//               //       <TagNames>{tag.tag}</TagNames>
-//               //     </TagLinks>                 
-//               //   )
-//               // })
-//             }
-//            </TagContainer>
-//           </div>
-//         </TagBox>
-// )
-// }
 
 export const query = graphql`
   query {
