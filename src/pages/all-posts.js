@@ -10,6 +10,7 @@ import SEO from "../components/seo"
 import { TO_POST } from "../routes/path"
 import RightSideBar from "../utils/allPostsRightTagBar"
 import kebabCase from "lodash/kebabCase"
+import { ConvertDateToMonthYear } from "../utils/utilities"
 
 
 const IndividualPostWrapper = styled.div`
@@ -83,10 +84,10 @@ export default function showAllPosts({ data }) {
             {" "}
             <h1>All posts</h1>
           </MainHeader>
-          {data.post.group.map((grp, i) => {
+          {data.post.group.reverse().map((grp, i) => {
             return (
               <AllPosts key={(i + 1) * 3}>
-                <MonthYear>{grp.fieldValue}</MonthYear>
+                <MonthYear>{ConvertDateToMonthYear(grp.fieldValue)}</MonthYear>
 
                 {grp.edges.map(({ node, i }) => (
                   <IndividualPostWrapper key={node.frontmatter.slug}>
@@ -186,7 +187,7 @@ export const query = graphql`
       sort: { fields: [frontmatter___modified], order: DESC }
       filter: { frontmatter: { type: { eq: "post" } } }
     ) {
-      group(field: frontmatter___blogMonth) {
+      group(field: frontmatter___created) {
         fieldValue
         edges {
           node {
@@ -195,6 +196,7 @@ export const query = graphql`
               modified
               slug
               tags
+              blogMonth
             }
             fields {
               slug
