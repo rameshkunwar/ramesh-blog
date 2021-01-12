@@ -13,7 +13,7 @@ blogMonth: January 2021
 
 ![post image](../../images/blog/blog-008-dotnetcore-mysql-img001.jpg " ")
 
-Possibility of using MySQL (or MariaDB) with .Net Core opens an opportunity to use open-source free database. Moreover, one can take advantage of .Net Core or .Net 5 being cross-platform by bypassing all Microsoft's paid services! Yes, Linux hosting with one of the open-source free database.
+Possibility of using MySQL (or MariaDB) with .Net Core opens an opportunity to use open-source & free database. Moreover, one can take advantage of .Net Core or .Net 5 being cross-platform by bypassing all Microsoft's paid services! Yes, Linux hosting with one of the open-source & free database.
 
 > MySQL is technically an open-source database. However, under Oracle, MySQL now has proprietary, closed-source modules. MariaDB, being a MySQL fork, is a good alternative. MariaDB 5.5 offers all of the MySQL 5.5 features[^1].
 
@@ -100,4 +100,99 @@ I am not going to show guidelines regarding creating a database and a user in My
     }
 ```
 
-## DBContext
+## Create DBContext
+
+Now, DBContext (database context class) is the main class that coordinates Entity Framework functionality for a given data model. In other words, DBContext looks the models and generates corresponding database tables.
+
+It's good idea to have database related operations in a separate project. But for the sake of simplicity, I am doing on the same project. This approach is not recommended.
+
+1. Create a folder at the root of the project, let's say _Data_.
+2. Create a _DbContext_ derived class inside the newly created folder, let's say _DotNetCoreMySQLContext_
+3. Specify the entities to be included in the data model by creating _DbSet_ property like `public DbSet<User> Users { get; set; }`.
+
+The _DbContext_ derived _DotNetCoreMySQLContext_ looks like this:
+
+```
+public class DotNetCoreMySQLContext : DbContext
+{
+    public DotNetCoreMySQLContext(DbContextOptions<DotNetCoreMySQLContext> options) : base(options) {}
+    public DbSet<User> User { get; set; }
+}
+```
+
+## Add connection string
+
+1. We need to tell our app where to find our database.
+2. Unlike _.net framework_, connection strings are specified in _appsettings.json_. There is no _web.config_.
+3. Then we have to reference the connection string from _Startup.cs_.
+
+_appsettings.json_
+
+```
+"AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DotNetCoreMySQLAppConnection": "server=localhost; port=3306; database=mysqldotnet; user=mysqldotnetuser; password=Pa55w0rd!; Persist Security Info=false; Connect Timeout=300"
+  }
+```
+
+> It's always a bad idea to store password in appsettings.json file. Even if we are pushing in our private repository. This can be avoided by using _user secrets_. Again, for the sake of simplicity, I am using plain password. However, _user secrets_ is a good topic for a blog itself!
+
+## Inject connection string in _Startup.cs_
+
+ConfigureServices method from _startup.cs_
+
+```
+ public void ConfigureServices(IServiceCollection services)
+{
+    string dbConnectionString = Configuration.GetConnectionString("DotNetCoreMySQLAppConnection");
+    services.AddDbContext<DotNetCoreMySQLContext>(opt => opt.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)));
+
+    services.AddControllers();
+}
+```
+
+This line `services.AddDbContext<DotNetCoreMySQLContext>(opt => opt.UseMySql(dbConnectionString, ServerVersion.AutoDetect(dbConnectionString)))` tells the app to use _MySQL_ provider and our context class with the connection string from _appsettings.json_.
+
+## Create migration and update database
+
+Now, we have setup everything to use Code-First approach to create tables in the database. Entity Framework keep tracks of all models through migrations. Every time, we update or create model, we need to do so my making a unique migration. These migrations becomes a sort of record and they can be used to roll-back in the event of an error.
+
+1. Create first migration by typing following command in _Package Manager Console_
+
+```
+PM> dotnet ef migrations add FirstMigration
+Build started...
+Build succeeded.
+Done. To undo this action, use 'ef migrations remove'
+PM>
+```
+
+EF creates a folder called _Migrations_ at the root of the project to store all migrations. 2. Apply changes to the database by typing command given below. Remember, MySQL server must be running at this time.
+
+```
+PM> dotnet ef database update
+Build started...
+Build succeeded.
+Done.
+```
+
+## Confirm table creation in the database.
+
+Open MySQL Workbench (or your SQL editor) and confirm the creation of the table.
+
+![table created image](../../images/blog/blog-008-table-created-img003.jpg " ")
+
+## Using .NET 5.0
+
+Change the Target Framework by right-clicking on the Project name. On _Application_ tab choose _.Net 5.0_ from the _Target Framework_ dropdown. The can also be done by opening _PROJECT_NAME.csproj_ file in text editor and changing
+` <TargetFramework>net5.0</TargetFramework>`. NOTE: .NET 5 SDK or runtime must be installed.
+
+## Testing if it works with .NET 5.0
+
+1. Add a new model in the folder _Models_.
+2. Add a new migration. `dotnet ef migrations add NewModel`
+3. Update database `dotnet ef database udpate`
+
+Refresh the database in MySQL to confirm the new table is created.
+
+## _Source code for the blog can be found [here](https://github.com/rameshkunwar/DotNetCore31And50WithMySQL)_
