@@ -3,7 +3,7 @@ title: "Enabling  CORS"
 created: "2020-12-31T21:13:22.415"
 modified: "2020-12-31T21:13:22.415"
 description: "Enable CORS (cross-origin request) in asp.net web api (.net framework 4.x)"
-featuredImage: "../../images/blog/blog-007-cors-webapi-img001.jpg"
+featuredImage: "../../images/blog/blog-007-cors-webapi-img005.jpg"
 imageCaption: ""
 slug: enable-cross-origin-cors-request
 tags: ["asp.net web api", "cors"]
@@ -11,7 +11,7 @@ type: post
 blogMonth: December 2020
 ---
 
-![post image](../../images/blog/blog-007-cors-webapi-img001.jpg " ")
+![post image](../../images/blog/blog-007-cors-webapi-img005.jpg " ")
 
 Sometimes it is necessary to overcome browser restrictions(making AJAX requests to another domain). CORS (Cross Origin Resource Sharing) allows us to relax the same-origin policy.
 
