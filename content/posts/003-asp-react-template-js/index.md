@@ -15,6 +15,8 @@ blogMonth: October 2020
 
 Substitute View of MVC or build front-end of Web API 2 with React JS. This template bundles, splits, minifies & injects scripts & styles on \_Layout.cshtml file dynamically at build time.
 
+>>> ## The template has been updated with Webpack 5 & React 17. Read [here](https://kunwar.dk/posts/updated-asp-dot-net-mvc-react-15-webpack-5-template/)
+
 Visual Studio 2019 comes with React JS template but only for .Net Core. For the .Net Framework-based projects, two of the many possible things can be done (consuming third-party API is not considered in this blog as it will be pure React app).
 
 An ideal application would be the first choice; however, it has its constraints. Some of the constraints could be:
