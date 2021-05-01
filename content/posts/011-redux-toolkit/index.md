@@ -23,14 +23,14 @@ However, Redux makes global state management (my experience with React JS) much 
 
 Redux development tool was quite aware of both popularity and boilerplate code issue. Then they came up with a wonderful product [Redux Toolkit](https://redux-toolkit.js.org/).
 
-When I tried Redux Toolkit for the first time, I was quite surprised by its simplicity. Gone are the days when Redux was a ghost locked in a door and creator of the ghost telling you not to unleash it.
+When I tried Redux Toolkit for the first time, I was quite surprised by its simplicity. Gone are the days when Redux was a ghost locked in a door and the creator of the ghost telling you not to unleash it.
 
 ## Changes in Redux Toolkit (or advantages over Redux)
 
-1. Mutate state : No longer developer need to ensure the state is updated in an immutable way. Redux Toolkit comes with [Immer](https://immerjs.github.io/immer/) and it updates the state in an immutable way.
+1. Mutating syntax, immutable update logic : No longer developer need to ensure the state is updated in an immutable way. Redux Toolkit comes with [Immer](https://redux-toolkit.js.org/usage/immer-reducers) and it updates the state in an immutable way.
 2. Typescript: Redux Toolkit is written in Typescript, so its TS type definitions are [built in](https://redux-toolkit.js.org/usage/usage-with-typescript).
 3. Async request: No need to install Redux Thunk as [Redux Thunk](https://redux-toolkit.js.org/usage/usage-guide#async-requests-with-createasyncthunk) is built-in.
-4. Combined Reducers, Actions and Action Creators: This is probably one of the best feature to reduce all the boilerplate and complexity. This is done using `createSlice` hook.
+4. Combined Reducers, Actions and Action Creators: This is probably one of the best features to reduce all the boilerplate and complexity. This is done using `createSlice` hook.
 5. Integrated Redux Dev Tool: No need to write separate code for Redux Dev Tool. It's integrated now!
 
 Redux was amazing but rather complex to crack in the beginning. But with Redux Toolkit, it's awesome and without that complexity.
