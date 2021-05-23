@@ -37,3 +37,10 @@ Updated: Template for ASP.NET MVC (.Net Framework 4.x.x) with React 17 & Webpack
 Read my answer about it in [Stack Overflow](https://stackoverflow.com/questions/57825600/automatic-include-files-in-folder-in-visual-studio-2019-project/59676355#59676355)
 
 Template can be downloaded from [Github](https://github.com/rameshkunwar/AspDotNetMvcReact17Webpack5Template)
+
+> My old [post](https://kunwar.dk/posts/asp-dot-net-mvc-react-js-template/) describes in detail how I made this template.
+
+### Related posts
+
+1. [ASP.NET MVC (.Net Framework) with React 17 with Typescript and Webpack 5](https://kunwar.dk/posts/asp-dot-net-mvc-react-js-typescript-webpack-template/)
+2. [ASP.NET MVC (.Net Framework) with React 16 and Webpack 4](https://kunwar.dk/posts/asp-dot-net-mvc-react-js-template/)
