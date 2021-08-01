@@ -2,7 +2,7 @@
 exports.onServiceWorkerUpdateReady = () => {
   if (
     window.confirm(
-      "This site has been updated with new data. Do you wish to reload the site to get the new data?"
+      "This site has been updated with new data or a new blog post. Do you wish to reload the site to get the new data?"
     )
   ) {
     // window.location.reload(true); //deprecated
