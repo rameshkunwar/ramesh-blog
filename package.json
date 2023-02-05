@@ -1,59 +1,42 @@
 {
-  "name": "ramesh-personal-blog",
+  "name": "ramesh-blog",
+  "version": "1.0.0",
   "private": true,
-  "description": "A personal tech-focused blog",
-  "version": "0.1.0",
-  "license": "BSD",
+  "description": "ramesh-blog",
+  "author": "Ramesh Kunwar",
+  "keywords": [
+    "gatsby"
+  ],
   "scripts": {
-    "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@deckdeckgo/highlight-code": "^2.0.0",
-    "@emotion/core": "^10.0.35",
-    "axios": "^0.20.0",
-    "gatsby": "^2.24.53",
-    "gatsby-image": "^2.4.17",
-    "gatsby-plugin-emotion": "^4.3.10",
-    "gatsby-plugin-gdpr-cookies": "^1.0.7",
-    "gatsby-plugin-google-analytics": "^2.3.14",
-    "gatsby-plugin-manifest": "^2.4.30",
-    "gatsby-plugin-offline": "^3.2.27",
-    "gatsby-plugin-react-helmet": "^3.3.10",
-    "gatsby-plugin-robots-txt": "^1.5.2",
-    "gatsby-plugin-sharp": "^2.6.35",
-    "gatsby-plugin-sitemap": "^2.4.13",
-    "gatsby-plugin-typography": "^2.5.10",
-    "gatsby-remark-highlight-code": "^2.0.0",
-    "gatsby-remark-images": "^3.3.30",
-    "gatsby-remark-prismjs": "^3.5.11",
-    "gatsby-remark-reading-time": "^1.1.0",
-    "gatsby-source-filesystem": "^2.3.27",
-    "gatsby-transformer-remark": "^2.8.34",
-    "gatsby-transformer-sharp": "^2.5.14",
-    "path-to-regexp": "^6.2.0",
-    "prismjs": "^1.21.0",
-    "react": "^16.12.0",
-    "react-cookie-consent": "^5.1.3",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0",
-    "react-typography": "^0.16.19",
-    "typography": "^0.16.19",
-    "typography-theme-fairy-gates": "^0.16.19"
+    "@mdx-js/react": "^2.2.1",
+    "@types/styled-components": "^5.1.26",
+    "babel-plugin-styled-components": "^2.0.7",
+    "gatsby": "^5.5.0",
+    "gatsby-plugin-google-gtag": "^5.5.0",
+    "gatsby-plugin-image": "^3.5.0",
+    "gatsby-plugin-manifest": "^5.5.0",
+    "gatsby-plugin-mdx": "^5.5.0",
+    "gatsby-plugin-sharp": "^5.5.0",
+    "gatsby-plugin-sitemap": "^6.5.0",
+    "gatsby-plugin-styled-components": "^6.5.0",
+    "gatsby-source-filesystem": "^5.5.0",
+    "gatsby-transformer-sharp": "^5.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "prettier": "2.1.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rameshkunwar/GatsbyGraphQL"
-  },
-  "bugs": {
-    "url": "https://github.com/rameshkunwar/GatsbyGraphQL/issues"
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "typescript": "^4.9.4"
   }
 }
