@@ -81,7 +81,10 @@ const badgeStyle = {
 const IndexPage = () => {
   return (
     <Layout>
-      <p>I'm making this by following the Gatsby Tutorial.</p>
+      <p>
+        In process of re-writting blog from Gatsby 2 to 5.5 in a hard way using
+        Typescript.
+      </p>
     </Layout>
   );
 };
