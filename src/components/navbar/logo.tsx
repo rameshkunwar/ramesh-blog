@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
-import { useImageFluid } from "./use-author-image-hook";
-import Img, { getImage } from "gatsby-plugin-image";
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 
 const LogoWrap = styled.div`
   margin: auto 0;
@@ -51,20 +49,10 @@ const Thought = styled.div`
   }
 `;
 const Logo = () => {
-  const { childImageSharp } = useImageFluid();
-  const myImage = getImage(childImageSharp?.fluid) as Img.IGatsbyImageData;
+  // const { childImageSharp } = useImageFluid();
   return (
     <React.Fragment>
       <LogoWrap as={Link} to='/'>
-        {/* <Img
-          css={css`
-            border-radius: 64px;
-          `}
-          fluid={childImageSharp?.fluid}
-          alt='logo'
-        /> */}
-
-        {/* <GatsbyImage image={myImage} alt='author image' /> */}
         <StaticImage
           src='../../images/author_image.jpeg'
           alt='author image'
