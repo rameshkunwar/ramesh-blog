@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 import { useImageFluid } from "./use-author-image-hook";
+import Img, { getImage } from "gatsby-plugin-image";
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image";
 
 const LogoWrap = styled.div`
   margin: auto 0;
@@ -50,6 +52,7 @@ const Thought = styled.div`
 `;
 const Logo = () => {
   const { childImageSharp } = useImageFluid();
+  const myImage = getImage(childImageSharp?.fluid) as Img.IGatsbyImageData;
   return (
     <React.Fragment>
       <LogoWrap as={Link} to='/'>
@@ -60,6 +63,18 @@ const Logo = () => {
           fluid={childImageSharp?.fluid}
           alt='logo'
         /> */}
+
+        {/* <GatsbyImage image={myImage} alt='author image' /> */}
+        <StaticImage
+          src='../../images/author_image.jpeg'
+          alt='author image'
+          placeholder='blurred'
+          layout='fixed'
+          width={64}
+          height={64}
+          quality={100}
+          className='bio-avatar'
+        />
       </LogoWrap>
       <NameAndThoughtWrap>
         <StyledLink to='/'>Ramesh Kunwar</StyledLink>

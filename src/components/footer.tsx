@@ -1,4 +1,4 @@
-import Link from "gatsby";
+import { Link, GatsbyLinkProps } from "gatsby";
 import React from "react";
 import styled from "styled-components";
 import siteConfig from "../../site-config";
@@ -107,7 +107,7 @@ const SocialMediaLink = styled.a`
     background-color: ${siteConfig.alternativeColor};
   }
 `;
-const NavItem = styled(Link)`
+const NavItem = styled((props) => <Link {...props} />)`
   text-decoration: none;
   color: ${siteConfig.brandColor};
   display: inline-block;

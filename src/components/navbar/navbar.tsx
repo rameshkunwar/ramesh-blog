@@ -120,7 +120,7 @@ const Navbar = () => {
 
   return (
     <Navigation>
-      {/* <Logo /> */}
+      <Logo />
       <Toggle
         navbarOpen={navbarOpen}
         onClick={() => setNavbarOpen(!navbarOpen)}

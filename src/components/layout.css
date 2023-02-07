@@ -53,6 +53,9 @@
   .tag-link {
     text-decoration: none;
   }
+  .bio-avatar{
+    border-radius: 64px;
+  }
   
   @media (max-width: 500px) {
     p {

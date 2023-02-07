@@ -1,5 +1,4 @@
 import * as React from "react";
-//import { Link } from "gatsby";
 import siteConfig from "../../site-config";
 import styled from "styled-components";
 import "./layout.css";
@@ -131,7 +130,7 @@ const Layout = ({ children, leftSideBar, rightSideBar }: any) => {
         <AsideRight> {rightSideBar} </AsideRight>
         <AsideLeft>{leftSideBar}</AsideLeft>
       </BlogPostMain>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
