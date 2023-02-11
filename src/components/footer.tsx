@@ -172,7 +172,6 @@ const Footer = () => {
           <NavItem to={siteConfig.links.home}>Home</NavItem>
           <NavItem to={siteConfig.links.allPosts}>All posts</NavItem>
           <NavItem to={siteConfig.links.about}>About</NavItem>
-          <NavItem to={siteConfig.links.contact}>Contact</NavItem>
         </FooterNavigation>
         <SocialMedia>
           <SocialMediaLink

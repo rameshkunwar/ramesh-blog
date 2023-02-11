@@ -7,5 +7,6 @@ type Seo = {
     keywords?:string,
     articleUrl?:string,
     articleImage?:string,
-    lang?:any
+    lang?:any,
+    author?:string
 }

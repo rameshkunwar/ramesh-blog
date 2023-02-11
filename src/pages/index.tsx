@@ -1,90 +1,66 @@
 import * as React from "react";
-import { HeadFC, Link, PageProps } from "gatsby";
+import { graphql, HeadFC, Link, PageProps } from "gatsby";
 import Layout from "../components/layout";
+import SEO from "../components/seo";
+import siteConfig from "../../site-config";
+import styled from "styled-components";
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-};
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-};
-const headingAccentStyles = {
-  color: "#663399",
-};
-const paragraphStyles = {
-  marginBottom: 48,
-};
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-};
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-};
-const doclistStyles = {
-  paddingLeft: 0,
-};
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-};
+const IndividualPostWrapper = styled.div`
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px #dae4ed, 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  overflow: hidden;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  @media (max-width: 667px) {
+    padding: 0.5rem;
+  }
+`;
+const BlogContainer = styled.div`
+  display:flex;
+  order:2;
+  min-height:74vh;
+  margin-top:2rem;
+  font-family: 'merriweather',serif;
+  justify-content:center;
+  }
+`;
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-};
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-};
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-};
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-};
-
-const IndexPage = () => {
+const Main = styled.div`
+  flex: 0 0 800px;
+  max-width: 100%;
+  box-sizing: border-box;
+`;
+const DateAndReadTime = styled.div`
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+`;
+const IndexPage = ({ data }: any) => {
   return (
     <Layout>
-      <p>
-        In process of re-writting blog from Gatsby 2 to 5.5 in a hard way using
-        Typescript.
-      </p>
+      <SEO
+        title={siteConfig.title}
+        description={siteConfig.description}
+        author={siteConfig.author}
+        keywords={siteConfig.tags}
+        articleUrl={`https://kunwar.dk`}
+      />
+      <BlogContainer>
+        <Main>
+          {data.allMdx.nodes.map((node: any) => (
+            <IndividualPostWrapper key={node.id}>
+              <Link to={node.frontmatter.slug}>
+                <h2>{node.frontmatter.title}</h2>
+                <DateAndReadTime>
+                  {" "}
+                  {node.frontmatter.modified.toLocaleString()}{" "}
+                </DateAndReadTime>
+              </Link>
+            </IndividualPostWrapper>
+          ))}
+        </Main>
+      </BlogContainer>
     </Layout>
   );
 };
@@ -92,3 +68,25 @@ const IndexPage = () => {
 export default IndexPage;
 
 export const Head: HeadFC = () => <title>Home Page</title>;
+
+export const query = graphql`
+  query {
+    allMdx(sort: { frontmatter: { modified: DESC } }) {
+      nodes {
+        frontmatter {
+          title
+          created
+          modified
+          slug
+          tags
+          featuredImage {
+            id
+            relativePath
+          }
+        }
+        id
+        excerpt
+      }
+    }
+  }
+`;

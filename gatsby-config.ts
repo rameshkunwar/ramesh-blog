@@ -24,14 +24,23 @@ const config: GatsbyConfig = {
       "path": "./src/images/"
     },
     __key: "images"
-  }, {
+  }, 
+  {
     resolve: 'gatsby-source-filesystem',
     options: {
       "name": "pages",
       "path": "./src/pages/"
-    },
-    __key: "pages"
-  }]
+    }
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      "name": "blogs",
+      "path": `${__dirname}/blogs/`
+    }
+  },
+  "gatsby-plugin-mdx",
+]
 };
 
 export default config;

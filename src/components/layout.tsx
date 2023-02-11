@@ -80,7 +80,6 @@ const SocialMediaImage = styled.img`
 `;
 
 const Layout = ({ children, leftSideBar, rightSideBar }: any) => {
-  console.info(siteConfig);
   return (
     <>
       <SocialMedia>
