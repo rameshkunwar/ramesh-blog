@@ -5,19 +5,22 @@ modified: "2020-10-05T21:49:00.512"
 description: "Use nvm for windows to install multiple version of node.js & npm and easily toggle between them"
 featuredImage: "./blog-002-img02.jpg"
 imageCaption: ""
+hero_image: "./blog-002-img02.jpg"
+hero_image_alt: "A nvm related image"
+hero_image_credit_text: "self"
 slug: nvm-for-multiple-node-versions
 tags: ["nvm", "node.js", "npm"]
 type: post
 blogMonth: October 2020
 ---
 
-![blog image](./blog-002-img02.jpg " ")
+![blog image](./blog-002-img02.jpg "own image")
 
 Have you ever been in a situation where you have to support an old or special project (works only with a certain version of Node.js) with a legacy node.js version, and at the same time, have to work on new projects with the latest version of Node.js?
 
 I had the same issue where I had to use Node.js 8.9.0 (Carbon) and the latest version for my React JS project. Well, this is where NVM comes into the action.
 
-> The version of NVM I am going to write about is Windows-specific only. If you are looking for Mac/Linux nvn, please follow this [link](https://github.com/nvm-sh/nvm).
+> The version of NVM I am going to write about is Windows-specific only. If you are looking for Mac/Linux nvn, please follow this [link](https://github.com/nvm-sh/nvm)
 
 NVM (Node.js version manager for Windows) can be downloaded from [here](https://github.com/coreybutler/nvm-windows/releases)
 
@@ -34,9 +37,10 @@ Download **nvm-setup.zip**, unzip and then install it.
 Once installed, you can check any installed version of node.js:
 
 ```
-C:\Users\rames>nvm list
-  * 12.14.0 (Currently using 64-bit executable)
-C:\Users\rames>
+   C:\Users\rames>nvm list
+   * 12.14.0 (Currently using 64-bit executable)
+    C:\Users\rames>
+
 ```
 
 The asterisk (\*) on the left-hand side denotes the version of node.js that is being used.
@@ -48,7 +52,7 @@ Above command shows nvm version as well as available nvm commands.
 
 ## Install a version of Node.js
 
-The syntax to install node.js is _nvm install <version> [arch]_ where <verion> is the needed version and [arch] is 32-or64-bit
+The syntax to install node.js is _nvm install NODE_JS_VERSION [arch]_ where NODE_JS_VERSION is the needed version and [arch] is 32-or64-bit
 
 ```
 C:\Users\rames>nvm install 8.9.0 [64]

@@ -4,6 +4,7 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import siteConfig from "../../site-config";
 import styled from "styled-components";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
@@ -37,6 +38,10 @@ const DateAndReadTime = styled.div`
   font-weight: 500;
 `;
 const IndexPage = ({ data }: any) => {
+  const handleImage = (imagePath: any) => {
+    const image = getImage(imagePath);
+    return image;
+  };
   return (
     <Layout>
       <SEO
@@ -51,11 +56,18 @@ const IndexPage = ({ data }: any) => {
           {data.allMdx.nodes.map((node: any) => (
             <IndividualPostWrapper key={node.id}>
               <Link to={node.frontmatter.slug}>
+                <GatsbyImage
+                  image={handleImage(node.frontmatter.hero_image)}
+                  alt={node.frontmatter.hero_image_alt}
+                />
                 <h2>{node.frontmatter.title}</h2>
                 <DateAndReadTime>
                   {" "}
                   {node.frontmatter.modified.toLocaleString()}{" "}
                 </DateAndReadTime>
+              </Link>
+              <Link to={node.frontmatter.slug}>
+                <p> {node.excerpt} </p>
               </Link>
             </IndividualPostWrapper>
           ))}
@@ -67,7 +79,7 @@ const IndexPage = ({ data }: any) => {
 
 export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>;
+export const Head: HeadFC = () => <title>My blog</title>;
 
 export const query = graphql`
   query {
@@ -79,13 +91,16 @@ export const query = graphql`
           modified
           slug
           tags
-          featuredImage {
-            id
-            relativePath
+          hero_image_alt
+          hero_image_credit_text
+          hero_image {
+            childImageSharp {
+              gatsbyImageData
+            }
           }
         }
         id
-        excerpt
+        excerpt(pruneLength: 140)
       }
     }
   }
