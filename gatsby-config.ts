@@ -39,6 +39,12 @@ const config: GatsbyConfig = {
       "path": `${__dirname}/blogs/`
     }
   },
+  {
+    resolve:`gatsby-remark-images`,
+    options:{
+      maxWidth:590
+    }
+  },
   "gatsby-plugin-mdx",
   "gatsby-transformer-sharp",
 ]

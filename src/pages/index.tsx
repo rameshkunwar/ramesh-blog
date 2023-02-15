@@ -55,7 +55,7 @@ const IndexPage = ({ data }: any) => {
         <Main>
           {data.allMdx.nodes.map((node: any) => (
             <IndividualPostWrapper key={node.id}>
-              <Link to={node.frontmatter.slug}>
+              <Link to={`/posts/${node.frontmatter.slug}`}>
                 <GatsbyImage
                   image={handleImage(node.frontmatter.hero_image)}
                   alt={node.frontmatter.hero_image_alt}
@@ -66,7 +66,7 @@ const IndexPage = ({ data }: any) => {
                   {node.frontmatter.modified.toLocaleString()}{" "}
                 </DateAndReadTime>
               </Link>
-              <Link to={node.frontmatter.slug}>
+              <Link to={`/posts/${node.frontmatter.slug}`}>
                 <p> {node.excerpt} </p>
               </Link>
             </IndividualPostWrapper>
