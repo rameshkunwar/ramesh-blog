@@ -5,6 +5,7 @@ import SEO from "../components/seo";
 import siteConfig from "../../site-config";
 import styled from "styled-components";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import { readTime } from "../utils/utils";
 
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
@@ -37,6 +38,17 @@ const DateAndReadTime = styled.div`
   font-size: 0.8rem;
   font-weight: 500;
 `;
+const TitleText = styled.h2`
+  font-family: sohne, Helvetica Neue, Helvetica, Arial, sans-serif !important;
+  margin-bottom: 0.35rem;
+  margin-top: 1.4rem;
+  color: hsla(0, 0%, 0%, 0.9) !important;
+  text-decoration: none !important;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+  font-size: 1.51572rem;
+  line-height: 1.1;
+`;
 const IndexPage = ({ data }: any) => {
   const handleImage = (imagePath: any) => {
     const image = getImage(imagePath);
@@ -60,12 +72,15 @@ const IndexPage = ({ data }: any) => {
                   image={handleImage(node.frontmatter.hero_image)}
                   alt={node.frontmatter.hero_image_alt}
                 />
-                <h2>{node.frontmatter.title}</h2>
-                <DateAndReadTime>
-                  {" "}
-                  {node.frontmatter.modified.toLocaleString()}{" "}
-                </DateAndReadTime>
+                <TitleText>{node.frontmatter.title}</TitleText>
               </Link>
+              <DateAndReadTime>
+                {" "}
+                {new Intl.DateTimeFormat("en-US", {
+                  dateStyle: "medium",
+                }).format(new Date(node.frontmatter.modified))}
+                . {readTime(node.body)}
+              </DateAndReadTime>
               <Link to={`/posts/${node.frontmatter.slug}`}>
                 <p> {node.excerpt} </p>
               </Link>
@@ -101,6 +116,7 @@ export const query = graphql`
         }
         id
         excerpt(pruneLength: 140)
+        body
       }
     }
   }

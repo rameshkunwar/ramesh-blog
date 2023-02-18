@@ -1,3 +1,15 @@
+html{
+  font: 100%/1.4 'merriweather',serif;
+  box-sizing: border-box;
+}
+body{
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: "kern", "liga", "clig", "calt";
+  -ms-font-feature-settings: "kern", "liga", "clig", "calt";
+  -webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+  font-feature-settings: "kern", "liga", "clig", "calt";
+}
 .gatsby-resp-image-figcaption {
     font-size: 1rem;
     color: #000;
@@ -22,6 +34,7 @@
   }
   a {
     color: #003893 !important;
+    text-decoration: none !important;
   }
   a:hover {
     color: #c60c30 !important;

@@ -1,6 +1,7 @@
 import * as React from "react";
 import siteConfig from "../../site-config";
 import styled from "styled-components";
+
 import "./layout.css";
 import Navbar from "./navbar/navbar";
 import Footer from "./footer";
