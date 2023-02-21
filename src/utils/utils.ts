@@ -3,7 +3,7 @@ export const readTime = (text:string) : string => {
     const wordsCountWithoutWhiteSpace = text.trim().split(/\s+/).length;
     const timeToRead = Math.ceil(wordsCountWithoutWhiteSpace / wordsPerMinute);
     console.info("time to read = " + timeToRead)
-    return `${timeToRead} min.`;
+    return `${timeToRead} min read`;
 }
 /*
  * Words per minute data - Might not be accurate, do we know exact? 
@@ -34,11 +34,17 @@ export const generateShareLinks = (type : string, description:string, url:string
     return returnUrl;
   }
   export const getFullUrl = (slug:string) => {
-    return `https://kunwar.dk/posts/${slug}`
-    // var isLocalhost = window?.location?.href.indexOf('localhost') > 0;
-    // if(isLocalhost){
-    //   return `http://localhost:8000/posts/${slug}`
-    // }else{
-    //   return `https://kunwar.dk/posts/${slug}`
-    // }
+    return `https://kunwar.dk/posts/${slug}`   
+  }
+
+  export const dateToMonthYear = (date:string) : string => {
+    if(!date) throw "not a vlaid date. given date = "+date;
+    const parsedDate = Date.parse(date);
+    if(isNaN(parsedDate)) throw "not a vlaid date. given date = "+date;
+
+    const fullYear = new Date(parsedDate).getFullYear();
+
+    const month = new Date(parsedDate).toLocaleString("default", {month:'long'});
+
+    return `${month} ${fullYear}`;
   }
