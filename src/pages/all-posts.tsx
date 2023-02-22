@@ -5,6 +5,8 @@ import SEO from "../components/seo";
 import { graphql, Link } from "gatsby";
 import { dateToMonthYear, readTime } from "../utils/utils";
 import siteConfig from "../../site-config";
+import kebabCase from "kebab-case";
+import { nanoid } from "nanoid";
 
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
@@ -62,6 +64,56 @@ const Modified = styled.div`
   font-size: 0.9rem;
   margin-top: 0.5rem;
 `;
+const TagOuterContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+`;
+const TagInnerContainer = styled.div`
+  margin: 0.4rem 0;
+  display: wrap;
+  flex-wrap: wrap;
+`;
+const Tags = styled.div`
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  background-color: rgb(0 56 147 / 0.2);
+  border-radius: 1rem;
+  padding: 0 0.8rem;
+  color: ${siteConfig.brandColor};
+  margin-top: 0.2rem;
+  text-decoration: none !important;
+  text-shadow: none;
+  background-image: none;
+  border-width: 0;
+  &:hover {
+    cursor: pointer;
+    color: ${siteConfig.alternativeColor};
+    background-color: ${siteConfig.brandColor};
+    text-decoration: none;
+  }
+`;
+
+const TagButton = styled.button`
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  background-color: rgb(0 56 147 / 0.2);
+  border-radius: 1rem;
+  padding: 0 0.8rem;
+  color: ${siteConfig.brandColor};
+  margin-top: 0.2rem;
+  text-decoration: none !important;
+  text-shadow: none;
+  background-image: none;
+  border-width: 0;
+  &:hover {
+    cursor: pointer;
+    color: ${siteConfig.alternativeColor};
+    background-color: ${siteConfig.brandColor};
+    text-decoration: none;
+  }
+`;
 const MainHeader = styled.div`
   display: block;
 `;
@@ -92,7 +144,7 @@ const ShowAllPosts = ({ data }: any) => {
                 <AllPosts key={grp.fieldValue}>
                   <MonthYear> {dateToMonthYear(grp.fieldValue)} </MonthYear>
 
-                  {grp.edges.map((post) => (
+                  {grp.edges.map((post: any) => (
                     <IndividualPostWrapper key={post.node.id}>
                       <Link to={`/posts/${post.node.frontmatter.slug}`}>
                         <TitleH3> {post.node.frontmatter.title} </TitleH3>
@@ -106,6 +158,22 @@ const ShowAllPosts = ({ data }: any) => {
                           . {readTime(post.node.body)}
                         </Modified>
                       </Link>
+                      <TagOuterContainer>
+                        <TagInnerContainer>
+                          {post.node.frontmatter.tags.map((tag: any) => [
+                            <TagButton key={nanoid()}>
+                              <a
+                                className='tag-link'
+                                href={`/tags/${kebabCase(
+                                  tag.replace("#", "-sharp")
+                                )}`}
+                              >
+                                {tag}
+                              </a>
+                            </TagButton>,
+                          ])}
+                        </TagInnerContainer>
+                      </TagOuterContainer>
                     </IndividualPostWrapper>
                   ))}
                 </AllPosts>
