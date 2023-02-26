@@ -7,6 +7,7 @@ import { dateToMonthYear, readTime } from "../utils/utils";
 import siteConfig from "../../site-config";
 import kebabCase from "kebab-case";
 import { nanoid } from "nanoid";
+import ShowTagsOnRightSideBar from "../utils/TagsOnRightSideBar";
 
 const IndividualPostWrapper = styled.div`
   border-radius: 8px;
@@ -126,7 +127,7 @@ const MonthYear = styled.h2`
 
 const ShowAllPosts = ({ data }: any) => {
   return (
-    <Layout>
+    <Layout rightSideBar={<ShowTagsOnRightSideBar />}>
       <SEO
         title={`All posts`}
         description={`List of all posts`}

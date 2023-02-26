@@ -48,3 +48,11 @@ export const generateShareLinks = (type : string, description:string, url:string
 
     return `${month} ${fullYear}`;
   }
+
+  export const toKebabCase = (str:string) => {
+    if(!str) return "";
+
+    if(str.toLowerCase() === "c#") str="cSharp";
+
+    return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  }
