@@ -43,7 +43,10 @@ const ShowTagsOnRightSideBar = ({ data }: any) => {
         <TagContainer>
           {allTags.allMdx.group.map((tag: any) => {
             return (
-              <TagLinks key={nanoid()} href={`/tags/${toKebabCase(tag.tag)}`}>
+              <TagLinks
+                key={nanoid()}
+                href={`/posts/tags/${toKebabCase(tag.tag)}`}
+              >
                 <TagNames> {tag.tag} </TagNames>
               </TagLinks>
             );

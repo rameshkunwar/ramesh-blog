@@ -95,6 +95,11 @@ const TagButton = styled.button`
 const TagsPost = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMdx;
+  return (
+    <>
+      <h3> tags pages here</h3>
+    </>
+  );
 };
 export default TagsPost;
 

@@ -124,7 +124,7 @@ const Layout = ({ children, leftSideBar, rightSideBar }: any) => {
         </SocialMediaLink>
       </SocialMedia>
       <Navbar />
-     
+
       <BlogPostMain>
         <BlogPosts>{children}</BlogPosts>
         <AsideRight> {rightSideBar} </AsideRight>

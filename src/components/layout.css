@@ -25,13 +25,13 @@ body{
   li {
     font-size: 1.2rem;
   }
-  code,
+  /* code,
   .deckgo-highlight-code-carbon {
     background: #000;
     color: #fff;
     line-height: 1.5;
     font-size: 0.9rem;
-  }
+  } */
   a {
     color: #003893 !important;
     text-decoration: none !important;
